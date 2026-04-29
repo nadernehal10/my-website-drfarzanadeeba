@@ -654,6 +654,26 @@
     .blog-body { padding: 1.1rem; }
   }
 
+  /* BACK TO TOP */
+  #back-to-top {
+    display: none;
+    position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 300;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--rose); color: white; border: none;
+    box-shadow: 0 4px 16px oklch(52% 0.11 14 / 0.3);
+    cursor: pointer; align-items: center; justify-content: center;
+    transition: opacity 0.3s, transform 0.3s, background 0.2s;
+    opacity: 0; transform: translateY(8px);
+  }
+  #back-to-top.visible {
+    display: flex; opacity: 1; transform: translateY(0);
+  }
+  #back-to-top:hover { background: var(--rose-deep); }
+
+  @media (min-width: 901px) {
+    #back-to-top { display: none !important; }
+  }
+
   /* MOBILE NAV */
   .mobile-menu {
     display: none; position: fixed; top: 68px; left: 0; right: 0; z-index: 99;
@@ -1079,6 +1099,11 @@
 <!-- VARIANT SWITCHER -->
 
 
+<!-- BACK TO TOP -->
+<button id="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
 <!-- FOOTER -->
 <footer>
   <span class="footer-brand" data-en="Dr. Farzana Deeba" data-bn="ডাঃ ফারজানা দীবা">Dr. Farzana Deeba</span>
@@ -1225,6 +1250,12 @@
     document.getElementById('form-main').style.display = 'none';
     document.getElementById('form-success').style.display = 'block';
   }
+
+  /* ─── BACK TO TOP ─── */
+  const btt = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    btt.classList.toggle('visible', window.scrollY > 300);
+  }, { passive: true });
 
   /* ─── TWEAKS ─── */
   window.addEventListener('message', e => {
