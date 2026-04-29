@@ -174,9 +174,10 @@
     width: 600px; height: 600px; border-radius: 50%;
     background: radial-gradient(circle, var(--rose-light) 0%, transparent 70%);
     pointer-events: none;
+    z-index: 0;
   }
 
-  .hero-content { padding: clamp(2rem, 4vw, 4rem) 2rem clamp(2rem, 4vw, 4rem) 0; }
+  .hero-content { padding: clamp(2rem, 4vw, 4rem) 2rem clamp(2rem, 4vw, 4rem) 0; position: relative; z-index: 1; }
 
   .hero-eyebrow {
     display: inline-flex; align-items: center; gap: 0.6rem;
@@ -599,6 +600,10 @@
       grid-template-columns: 1fr;
       padding-right: clamp(1.5rem, 6vw, 4rem);
       padding-left: clamp(1.5rem, 6vw, 4rem);
+      min-height: auto;
+      align-items: start;
+      padding-top: calc(68px + 2.5rem);
+      padding-bottom: 3.5rem;
     }
     .hero-image { display: none; }
     .about-grid { grid-template-columns: 1fr; }
@@ -618,6 +623,8 @@
     .quals-grid { grid-template-columns: 1fr; }
 
     .hero { padding-bottom: 3rem; }
+    .hero-eyebrow { color: var(--ink-mid); }
+    .hero-eyebrow::before { background: var(--ink-mid); }
     .hero h1 { font-size: clamp(2rem, 9vw, 2.8rem); }
     html[lang="bn"] .hero h1 { font-size: clamp(1.6rem, 8vw, 2.2rem); }
     .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.08em; }
