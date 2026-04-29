@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health Articles — Dr. Farzana Deeba</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Noto+Sans+Bengali:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: oklch(97% 0.012 60); --cream-deep: oklch(93% 0.018 55);
+    --rose: oklch(66% 0.09 15); --rose-deep: oklch(52% 0.11 14);
+    --rose-light: oklch(92% 0.025 15); --rose-pale: oklch(96% 0.015 20);
+    --ink: oklch(20% 0.018 50); --ink-mid: oklch(40% 0.016 50); --ink-soft: oklch(58% 0.014 50);
+    --gold: oklch(74% 0.08 72);
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'DM Sans', system-ui, sans-serif;
+    --font-bn: 'Noto Sans Bengali', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+  html[lang="bn"] body, html[lang="bn"] h1, html[lang="bn"] h2, html[lang="bn"] h3, html[lang="bn"] h4, html[lang="bn"] p, html[lang="bn"] a, html[lang="bn"] button, html[lang="bn"] span, html[lang="bn"] li { font-family: var(--font-bn); }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,246,240,0.93); backdrop-filter: blur(12px); border-bottom: 1px solid oklch(88% 0.018 55); padding: 0 clamp(1.5rem,5vw,4rem); height: 68px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-brand { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--ink-mid); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--rose-deep); }
+  .nav-right { display: flex; align-items: center; gap: 1rem; }
+  .lang-toggle { display: flex; border-radius: 99px; border: 1.5px solid var(--rose); overflow: hidden; background: white; }
+  .lang-btn { padding: 0.3rem 0.75rem; border: none; cursor: pointer; background: transparent; color: var(--ink-soft); font-family: var(--font-sans); font-size: 0.8rem; transition: all 0.2s; }
+  .lang-btn.active { background: var(--rose); color: white; }
+  .lang-btn:last-child { font-family: var(--font-bn); }
+  .nav-cta { background: var(--rose); color: white; border: none; border-radius: 99px; padding: 0.45rem 1.25rem; font-size: 0.85rem; cursor: pointer; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
+  .nav-cta:hover { background: var(--rose-deep); }
+  @media (max-width: 768px) { .nav-links { display: none; } }
+
+  .page-hero { padding-top: 68px; background: var(--cream); border-bottom: 1px solid oklch(90% 0.015 55); }
+  .page-hero-inner { max-width: 1100px; margin: 0 auto; padding: clamp(3rem,6vw,5rem) clamp(1.5rem,6vw,6rem); }
+  .breadcrumb { font-size: 0.8rem; color: var(--ink-soft); margin-bottom: 1.2rem; }
+  .breadcrumb a { color: var(--rose); text-decoration: none; }
+  .page-hero h1 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3rem); font-weight: 500; color: var(--ink); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 0.6rem; }
+  html[lang="bn"] .page-hero h1 { font-family: var(--font-bn); font-size: clamp(1.6rem,3.5vw,2.3rem); }
+  .page-hero p { font-size: 1rem; color: var(--ink-mid); max-width: 500px; }
+
+  .cat-tabs { display: flex; gap: 0.5rem; padding: 1.5rem 0 0; flex-wrap: wrap; }
+  .cat-tab { padding: 0.45rem 1.1rem; border-radius: 99px; border: 1.5px solid oklch(87% 0.015 50); background: white; font-size: 0.82rem; color: var(--ink-mid); cursor: pointer; transition: all 0.2s; font-family: var(--font-sans); }
+  .cat-tab:hover { border-color: var(--rose); color: var(--rose-deep); }
+  .cat-tab.active { background: var(--rose); color: white; border-color: var(--rose); }
+
+  .blog-main { max-width: 1100px; margin: 0 auto; padding: clamp(2.5rem,5vw,4rem) clamp(1.5rem,6vw,6rem); display: grid; grid-template-columns: 1fr 300px; gap: 4rem; align-items: start; }
+  @media (max-width: 960px) { .blog-main { grid-template-columns: 1fr; gap: 3rem; } }
+
+  /* FEATURED */
+  .featured-article { border-radius: 20px; overflow: hidden; background: white; border: 1px solid oklch(91% 0.014 50); margin-bottom: 2rem; display: grid; grid-template-columns: 1fr 1fr; cursor: pointer; transition: box-shadow 0.3s, transform 0.3s; }
+  .featured-article:hover { box-shadow: 0 16px 48px oklch(20% 0.02 50 / 0.1); transform: translateY(-3px); }
+  .featured-img { background: linear-gradient(135deg, var(--rose-pale), var(--cream-deep)); position: relative; min-height: 320px; overflow: hidden; }
+  .featured-img::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-45deg, transparent, transparent 14px, oklch(80% 0.025 15 / 0.12) 14px, oklch(80% 0.025 15 / 0.12) 15px); }
+  .featured-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .featured-img-label { position: absolute; inset: 0; z-index: 1; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: var(--ink-soft); font-family: monospace; opacity: 0.4; text-align: center; padding: 2rem; }
+  .featured-badge { position: absolute; top: 1.2rem; left: 1.2rem; z-index: 2; background: var(--rose); color: white; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 99px; }
+  .featured-body { padding: 2.2rem; display: flex; flex-direction: column; justify-content: space-between; }
+  .featured-cat { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.8rem; }
+  .featured-body h2 { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 500; color: var(--ink); line-height: 1.3; margin-bottom: 0.8rem; }
+  html[lang="bn"] .featured-body h2 { font-family: var(--font-bn); font-size: 1.2rem; }
+  .featured-body p { font-size: 0.9rem; color: var(--ink-mid); line-height: 1.75; flex: 1; }
+  .article-meta { font-size: 0.78rem; color: var(--ink-soft); margin-top: 1.5rem; display: flex; align-items: center; gap: 1rem; }
+  .read-more { color: var(--rose); font-weight: 500; text-decoration: none; font-size: 0.85rem; }
+  .read-more:hover { text-decoration: underline; }
+
+  /* GRID */
+  .articles-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+  @media (max-width: 600px) { .articles-grid { grid-template-columns: 1fr; } .featured-article { grid-template-columns: 1fr; } }
+  .article-card { background: white; border-radius: 16px; overflow: hidden; border: 1px solid oklch(91% 0.014 50); cursor: pointer; transition: box-shadow 0.25s, transform 0.25s; }
+  .article-card:hover { box-shadow: 0 8px 32px oklch(20% 0.02 50 / 0.08); transform: translateY(-3px); }
+  .article-img { height: 160px; background: linear-gradient(135deg, var(--rose-pale), var(--cream-deep)); position: relative; overflow: hidden; }
+  .article-img::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-45deg, transparent, transparent 12px, oklch(80% 0.025 15 / 0.1) 12px, oklch(80% 0.025 15 / 0.1) 13px); }
+  .article-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .article-img-label { position: absolute; inset: 0; z-index: 1; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: var(--ink-soft); font-family: monospace; opacity: 0.4; text-align: center; padding: 1rem; }
+  .article-body { padding: 1.4rem; }
+  .article-cat { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem; }
+  .article-card h3 { font-family: var(--font-serif); font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.5rem; line-height: 1.4; }
+  html[lang="bn"] .article-card h3 { font-family: var(--font-bn); font-size: 0.92rem; }
+  .article-card p { font-size: 0.83rem; color: var(--ink-soft); line-height: 1.7; }
+  .article-footer { padding: 0 1.4rem 1.2rem; display: flex; justify-content: space-between; align-items: center; }
+  .article-footer .article-meta { margin-top: 0; }
+
+  /* DETAIL VIEW */
+  .article-detail { display: none; }
+  .article-detail.open { display: block; }
+  .article-detail-inner { background: white; border-radius: 20px; padding: clamp(2rem,4vw,3.5rem); border: 1px solid oklch(91% 0.014 50); margin-bottom: 2rem; }
+  .back-btn { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--ink-soft); font-size: 0.85rem; cursor: pointer; border: none; background: none; font-family: var(--font-sans); padding: 0; margin-bottom: 2rem; transition: color 0.2s; }
+  .back-btn:hover { color: var(--rose); }
+  .article-hero-img { width: 100%; height: 320px; background: linear-gradient(135deg, var(--rose-pale), var(--cream-deep)); border-radius: 12px; margin-bottom: 2rem; position: relative; overflow: hidden; }
+  .article-hero-img::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-45deg, transparent, transparent 16px, oklch(80% 0.025 15 / 0.1) 16px, oklch(80% 0.025 15 / 0.1) 17px); }
+  .article-hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 12px; }
+  .article-hero-img-label { position: absolute; inset: 0; z-index: 1; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: var(--ink-soft); font-family: monospace; opacity: 0.4; }
+  .article-header { max-width: 760px; margin-bottom: 2rem; }
+  .article-detail-cat { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.8rem; }
+  .article-detail h1 { font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.4rem); font-weight: 500; color: var(--ink); line-height: 1.2; margin-bottom: 0.8rem; }
+  html[lang="bn"] .article-detail h1 { font-family: var(--font-bn); font-size: clamp(1.4rem,2.5vw,2rem); }
+  .article-detail-meta { font-size: 0.82rem; color: var(--ink-soft); display: flex; gap: 1.5rem; flex-wrap: wrap; padding-bottom: 1.5rem; border-bottom: 1px solid oklch(91% 0.014 50); margin-bottom: 2rem; }
+  .article-body-text { max-width: 760px; }
+  .article-body-text p { font-size: 1.02rem; color: var(--ink-mid); line-height: 1.9; margin-bottom: 1.4rem; }
+  .article-body-text h2 { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 500; color: var(--ink); margin: 2.5rem 0 0.9rem; }
+  html[lang="bn"] .article-body-text h2 { font-family: var(--font-bn); font-size: 1.2rem; }
+  .article-body-text h3 { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 500; color: var(--ink); margin: 1.8rem 0 0.7rem; }
+  .callout { background: var(--rose-pale); border-left: 3px solid var(--rose); border-radius: 0 12px 12px 0; padding: 1.2rem 1.5rem; margin: 1.8rem 0; }
+  .callout p { margin: 0; font-size: 0.95rem; color: var(--ink-mid); }
+  .article-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid oklch(91% 0.014 50); }
+  .article-tag { font-size: 0.78rem; background: var(--cream-deep); color: var(--ink-mid); border-radius: 99px; padding: 0.25rem 0.8rem; }
+
+  /* SIDEBAR */
+  .blog-sidebar { position: sticky; top: 86px; }
+  .sidebar-card { background: white; border-radius: 16px; padding: 1.4rem; border: 1px solid oklch(91% 0.014 50); margin-bottom: 1.2rem; }
+  .sidebar-card h4 { font-family: var(--font-serif); font-size: 0.95rem; font-weight: 500; color: var(--ink); margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid oklch(92% 0.012 50); }
+  .sidebar-article { display: flex; gap: 0.8rem; align-items: flex-start; padding: 0.7rem 0; border-bottom: 1px solid oklch(94% 0.01 50); cursor: pointer; transition: opacity 0.2s; }
+  .sidebar-article:hover { opacity: 0.7; }
+  .sidebar-article:last-child { border-bottom: none; padding-bottom: 0; }
+  .sidebar-thumb { width: 52px; height: 52px; border-radius: 8px; background: linear-gradient(135deg, var(--rose-pale), var(--cream-deep)); flex-shrink: 0; overflow: hidden; }
+  .sidebar-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .sidebar-article-title { font-size: 0.82rem; color: var(--ink); font-weight: 500; line-height: 1.4; }
+  .sidebar-article-meta { font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.2rem; }
+  .topic-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.6rem; }
+  .topic-chip { font-size: 0.78rem; padding: 0.25rem 0.75rem; border-radius: 99px; background: var(--cream-deep); color: var(--ink-mid); cursor: pointer; transition: all 0.2s; border: none; font-family: var(--font-sans); }
+  .topic-chip:hover { background: var(--rose-pale); color: var(--rose-deep); }
+
+  footer { background: oklch(16% 0.012 50); color: oklch(55% 0.01 50); padding: 2rem clamp(1.5rem,6vw,4rem); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  footer .footer-brand { font-family: var(--font-serif); color: oklch(75% 0.01 50); font-size: 0.95rem; }
+  footer p { font-size: 0.8rem; }
+  .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">Dr. Farzana Deeba</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="Services.html">Services</a></li>
+    <li><a href="Research.html">Research</a></li>
+    <li><a href="Blog.html" class="active">Blog</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" id="btn-bn" onclick="setLang('bn')">বাং</button>
+    </div>
+    <a href="index.html#contact" class="nav-cta" id="nav-cta-text">Book Appointment</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html" id="breadcrumb-home">Home</a> / <span id="breadcrumb-current">Health Articles</span></div>
+    <h1 id="hero-title">Women's Health, Explained</h1>
+    <p id="hero-subtitle">Evidence-based health education from Dr. Farzana Deeba — written clearly for patients and families.</p>
+    <div class="cat-tabs" id="cat-tabs"></div>
+  </div>
+</div>
+
+<div class="blog-main">
+  <div>
+    <div id="listing-view">
+      <div id="featured-slot"></div>
+      <div class="articles-grid" id="articles-grid"></div>
+    </div>
+    <div id="detail-view" class="article-detail">
+      <div class="article-detail-inner">
+        <button class="back-btn" onclick="closeArticle()">
+          <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 3L5 8l5 5"/></svg>
+          <span id="back-btn-text">Back to Articles</span>
+        </button>
+        <div id="article-content"></div>
+      </div>
+    </div>
+  </div>
+
+  <aside class="blog-sidebar">
+    <div class="sidebar-card fade-up">
+      <h4 id="sidebar-recent-title">Recent Articles</h4>
+      <div id="sidebar-recent"></div>
+    </div>
+    <div class="sidebar-card fade-up">
+      <h4 id="sidebar-topics-title">Browse Topics</h4>
+      <div class="topic-chips" id="sidebar-topics"></div>
+    </div>
+    <div class="sidebar-card fade-up">
+      <h4 id="sidebar-book-title">Book a Consultation</h4>
+      <p id="sidebar-book-desc" style="font-size:0.85rem;color:var(--ink-soft);margin-bottom:1rem;">Have a health concern? Dr. Deeba is available for consultations 4–9 PM daily.</p>
+      <a href="index.html#contact" style="display:block;background:var(--rose);color:white;text-align:center;border-radius:99px;padding:0.65rem;font-size:0.85rem;font-weight:500;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='var(--rose-deep)'" onmouseout="this.style.background='var(--rose)'" id="sidebar-book-btn">Book Appointment</a>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <span class="footer-brand">Dr. Farzana Deeba</span>
+  <p>© 2025 · Gynaecologist &amp; Infertility Specialist · Dhaka</p>
+</footer>
+
+<script src="site-content.js"></script>
+<script>
+let currentLang = 'en';
+let currentFilter = 'all';
+
+const CATS = {
+  all:       { en: 'All Topics',      bn: 'সব বিষয়' },
+  pcos:      { en: 'PCOS',            bn: 'পিসিওএস' },
+  fertility: { en: 'Fertility',       bn: 'উর্বরতা' },
+  pregnancy: { en: 'Pregnancy',       bn: 'গর্ভাবস্থা' },
+  menstrual: { en: 'Menstrual Health',bn: 'মাসিক স্বাস্থ্য' },
+  surgery:   { en: 'Surgery',         bn: 'অস্ত্রোপচার' },
+};
+
+const UI = {
+  en: {
+    heroTitle: "Women's Health, Explained",
+    heroSub: "Evidence-based health education from Dr. Farzana Deeba — written clearly for patients and families.",
+    breadHome: "Home", breadCurrent: "Health Articles",
+    backBtn: "Back to Articles",
+    navCta: "Book Appointment",
+    sidebarRecent: "Recent Articles", sidebarTopics: "Browse Topics",
+    sidebarBook: "Book a Consultation",
+    sidebarBookDesc: "Have a health concern? Dr. Deeba is available 4–9 PM daily.",
+    sidebarBookBtn: "Book Appointment",
+    featured: "Featured", readArticle: "Read article →", read: "Read →",
+    minRead: "min read", by: "By Dr. Farzana Deeba",
+  },
+  bn: {
+    heroTitle: "নারী স্বাস্থ্য সম্পর্কে জানুন",
+    heroSub: "ডাঃ ফারজানা দীবার প্রমাণ-ভিত্তিক স্বাস্থ্য শিক্ষা — রোগী ও পরিবারের জন্য সহজ ভাষায় লেখা।",
+    breadHome: "হোম", breadCurrent: "স্বাস্থ্য নিবন্ধ",
+    backBtn: "নিবন্ধসমূহে ফিরুন",
+    navCta: "অ্যাপয়েন্টমেন্ট নিন",
+    sidebarRecent: "সাম্প্রতিক নিবন্ধ", sidebarTopics: "বিষয় ব্রাউজ করুন",
+    sidebarBook: "পরামর্শ নিন",
+    sidebarBookDesc: "ডাঃ দীবা প্রতিদিন বিকাল ৪–রাত ৯টা পরামর্শের জন্য উপলব্ধ।",
+    sidebarBookBtn: "অ্যাপয়েন্টমেন্ট নিন",
+    featured: "বিশেষ নিবন্ধ", readArticle: "নিবন্ধ পড়ুন →", read: "পড়ুন →",
+    minRead: "মিনিট পড়া", by: "ডাঃ ফারজানা দীবা",
+  }
+};
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-bn').classList.toggle('active', lang === 'bn');
+  applyUI();
+  renderAll();
+}
+
+function applyUI() {
+  const u = UI[currentLang];
+  document.getElementById('hero-title').textContent = u.heroTitle;
+  document.getElementById('hero-subtitle').textContent = u.heroSub;
+  document.getElementById('breadcrumb-home').textContent = u.breadHome;
+  document.getElementById('breadcrumb-current').textContent = u.breadCurrent;
+  document.getElementById('back-btn-text').textContent = u.backBtn;
+  document.getElementById('nav-cta-text').textContent = u.navCta;
+  document.getElementById('sidebar-recent-title').textContent = u.sidebarRecent;
+  document.getElementById('sidebar-topics-title').textContent = u.sidebarTopics;
+  document.getElementById('sidebar-book-title').textContent = u.sidebarBook;
+  document.getElementById('sidebar-book-desc').textContent = u.sidebarBookDesc;
+  document.getElementById('sidebar-book-btn').textContent = u.sidebarBookBtn;
+}
+
+function renderAll() {
+  renderCatTabs();
+  renderListing();
+  renderSidebar();
+}
+
+function renderCatTabs() {
+  const container = document.getElementById('cat-tabs');
+  container.innerHTML = Object.entries(CATS).map(([key, labels]) =>
+    `<button class="cat-tab ${currentFilter===key?'active':''}" onclick="filterCat('${key}')">${labels[currentLang]}</button>`
+  ).join('');
+}
+
+function imgSlot(post, cls, h) {
+  if (post.image) {
+    return `<div class="${cls}" style="height:${h}px"><img src="${post.image}" alt="" loading="lazy"></div>`;
+  }
+  return `<div class="${cls}" style="height:${h}px"><div class="${cls}-label">${currentLang==='bn'?post.imageLabelBn:post.imageLabelEn}</div></div>`;
+}
+
+function renderListing() {
+  const lang = currentLang;
+  const u = UI[lang];
+  const posts = BLOG_POSTS.filter(p => currentFilter === 'all' || p.category === currentFilter);
+  const featured = posts.find(p => p.featured);
+  const grid = posts.filter(p => !p.featured);
+
+  // Featured
+  const fs = document.getElementById('featured-slot');
+  if (featured) {
+    const catLabel = CATS[featured.category][lang];
+    fs.innerHTML = `
+      <div class="featured-article fade-up" onclick="openArticle('${featured.id}')">
+        <div class="featured-img">
+          ${featured.image
+            ? `<img src="${featured.image}" alt="" loading="lazy">`
+            : `<div class="featured-img-label">${lang==='bn'?featured.imageLabelBn:featured.imageLabelEn}</div>`}
+          <div class="featured-badge">${u.featured}</div>
+        </div>
+        <div class="featured-body">
+          <div class="featured-cat">${catLabel}</div>
+          <h2>${lang==='bn'?featured.titleBn:featured.titleEn}</h2>
+          <p>${lang==='bn'?featured.excerptBn:featured.excerptEn}</p>
+          <div class="article-meta">
+            <span>${lang==='bn'?featured.dateBn:featured.date} · ${featured.readTime} ${u.minRead}</span>
+            <a href="#" class="read-more" onclick="event.stopPropagation();openArticle('${featured.id}')">${u.readArticle}</a>
+          </div>
+        </div>
+      </div>`;
+  } else {
+    fs.innerHTML = '';
+  }
+
+  // Grid
+  const grid_el = document.getElementById('articles-grid');
+  grid_el.innerHTML = grid.map(p => {
+    const catLabel = CATS[p.category][lang];
+    return `
+      <div class="article-card fade-up" onclick="openArticle('${p.id}')">
+        <div class="article-img">
+          ${p.image
+            ? `<img src="${p.image}" alt="" loading="lazy">`
+            : `<div class="article-img-label">${lang==='bn'?p.imageLabelBn:p.imageLabelEn}</div>`}
+        </div>
+        <div class="article-body">
+          <div class="article-cat">${catLabel}</div>
+          <h3>${lang==='bn'?p.titleBn:p.titleEn}</h3>
+          <p>${lang==='bn'?p.excerptBn:p.excerptEn}</p>
+        </div>
+        <div class="article-footer">
+          <span class="article-meta">${lang==='bn'?p.dateBn:p.date} · ${p.readTime} ${u.minRead}</span>
+          <a href="#" class="read-more" onclick="event.stopPropagation();openArticle('${p.id}')">${u.read}</a>
+        </div>
+      </div>`;
+  }).join('');
+
+  // Re-observe
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+}
+
+function renderSidebar() {
+  const lang = currentLang;
+  const u = UI[lang];
+  // Recent (first 3)
+  const recent = BLOG_POSTS.slice(0, 3);
+  document.getElementById('sidebar-recent').innerHTML = recent.map(p => `
+    <div class="sidebar-article" onclick="openArticle('${p.id}')">
+      <div class="sidebar-thumb">${p.image?`<img src="${p.image}" alt="">`:''}</div>
+      <div>
+        <div class="sidebar-article-title">${lang==='bn'?p.titleBn:p.titleEn}</div>
+        <div class="sidebar-article-meta">${lang==='bn'?p.dateBn:p.date}</div>
+      </div>
+    </div>`).join('');
+
+  // Topics
+  const cats = ['pcos','fertility','pregnancy','menstrual','surgery','all'];
+  document.getElementById('sidebar-topics').innerHTML = cats.map(k =>
+    `<button class="topic-chip" onclick="filterCat('${k}')">${CATS[k][lang]}</button>`
+  ).join('');
+}
+
+function filterCat(cat) {
+  currentFilter = cat;
+  closeArticle();
+  renderAll();
+}
+
+function openArticle(id) {
+  const lang = currentLang;
+  const u = UI[lang];
+  const post = BLOG_POSTS.find(p => p.id === id);
+  if (!post) return;
+  const catLabel = CATS[post.category][lang];
+  const content = document.getElementById('article-content');
+  content.innerHTML = `
+    <div class="article-hero-img">
+      ${post.image
+        ? `<img src="${post.image}" alt="">`
+        : `<div class="article-hero-img-label">${lang==='bn'?post.imageLabelBn:post.imageLabelEn}</div>`}
+    </div>
+    <div class="article-header">
+      <div class="article-detail-cat">${catLabel}</div>
+      <h1>${lang==='bn'?post.titleBn:post.titleEn}</h1>
+      <div class="article-detail-meta">
+        <span>${lang==='bn'?post.dateBn:post.date} · ${post.readTime} ${u.minRead} · ${u.by}</span>
+      </div>
+    </div>
+    <div class="article-body-text">${lang==='bn'?post.bodyBn:post.bodyEn}</div>
+    <div class="article-tags">
+      <span class="article-tag">${catLabel}</span>
+      <span class="article-tag">${lang==='bn'?'নারী স্বাস্থ্য':"Women's Health"}</span>
+      <span class="article-tag">${lang==='bn'?'ডাঃ ফারজানা দীবা':'Dr. Farzana Deeba'}</span>
+    </div>`;
+  document.getElementById('listing-view').style.display = 'none';
+  document.getElementById('detail-view').classList.add('open');
+  window.scrollTo({ top: 68 });
+}
+
+function closeArticle() {
+  document.getElementById('listing-view').style.display = '';
+  document.getElementById('detail-view').classList.remove('open');
+}
+
+const observer = new IntersectionObserver(entries => entries.forEach(e => {
+  if (e.isIntersecting) e.target.classList.add('visible');
+}), { threshold: 0.08 });
+
+// Init
+applyUI();
+renderAll();
+</script>
+</body>
+</html>

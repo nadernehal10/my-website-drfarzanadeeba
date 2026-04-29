@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research & Publications — Dr. Farzana Deeba</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&family=Noto+Sans+Bengali:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: oklch(97% 0.012 60); --cream-deep: oklch(93% 0.018 55);
+    --rose: oklch(66% 0.09 15); --rose-deep: oklch(52% 0.11 14);
+    --rose-light: oklch(92% 0.025 15); --rose-pale: oklch(96% 0.015 20);
+    --ink: oklch(20% 0.018 50); --ink-mid: oklch(40% 0.016 50); --ink-soft: oklch(58% 0.014 50);
+    --gold: oklch(74% 0.08 72);
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'DM Sans', system-ui, sans-serif;
+    --font-bn: 'Noto Sans Bengali', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+  html[lang="bn"] body, html[lang="bn"] h1, html[lang="bn"] h2, html[lang="bn"] h3, html[lang="bn"] p, html[lang="bn"] a, html[lang="bn"] button, html[lang="bn"] span, html[lang="bn"] li { font-family: var(--font-bn); }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,246,240,0.93); backdrop-filter: blur(12px); border-bottom: 1px solid oklch(88% 0.018 55); padding: 0 clamp(1.5rem,5vw,4rem); height: 68px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-brand { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--ink-mid); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--rose-deep); }
+  .nav-right { display: flex; align-items: center; gap: 1rem; }
+  .lang-toggle { display: flex; border-radius: 99px; border: 1.5px solid var(--rose); overflow: hidden; background: white; }
+  .lang-btn { padding: 0.3rem 0.75rem; border: none; cursor: pointer; background: transparent; color: var(--ink-soft); font-family: var(--font-sans); font-size: 0.8rem; transition: all 0.2s; }
+  .lang-btn.active { background: var(--rose); color: white; }
+  .lang-btn:last-child { font-family: var(--font-bn); }
+  .nav-cta { background: var(--rose); color: white; border: none; border-radius: 99px; padding: 0.45rem 1.25rem; font-size: 0.85rem; cursor: pointer; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
+  .nav-cta:hover { background: var(--rose-deep); }
+  @media (max-width: 768px) { .nav-links { display: none; } }
+
+  .page-hero { padding-top: 68px; background: linear-gradient(160deg, oklch(18% 0.015 50) 0%, oklch(28% 0.02 40) 100%); }
+  .page-hero-inner { max-width: 1100px; margin: 0 auto; padding: clamp(3.5rem,6vw,5.5rem) clamp(1.5rem,6vw,6rem); }
+  .breadcrumb { font-size: 0.8rem; color: oklch(55% 0.01 50); margin-bottom: 1.2rem; }
+  .breadcrumb a { color: var(--rose); text-decoration: none; }
+  .page-hero h1 { font-family: var(--font-serif); font-size: clamp(2rem,4vw,3.2rem); font-weight: 500; color: white; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 0.9rem; }
+  html[lang="bn"] .page-hero h1 { font-family: var(--font-bn); font-size: clamp(1.6rem,3.5vw,2.5rem); }
+  .page-hero p { font-size: 1rem; color: oklch(72% 0.01 50); max-width: 540px; }
+  .stats-row { display: flex; gap: 3rem; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid oklch(35% 0.015 50); flex-wrap: wrap; }
+  .stat-num { font-family: var(--font-serif); font-size: 2.2rem; color: var(--rose); font-weight: 600; line-height: 1; }
+  .stat-label { font-size: 0.78rem; color: oklch(60% 0.01 50); margin-top: 0.2rem; letter-spacing: 0.05em; }
+
+  .research-main { max-width: 1100px; margin: 0 auto; padding: clamp(3rem,6vw,5rem) clamp(1.5rem,6vw,6rem); display: grid; grid-template-columns: 260px 1fr; gap: 4rem; align-items: start; }
+  @media (max-width: 900px) { .research-main { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+  .sidebar { position: sticky; top: 86px; }
+  .sidebar h3 { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 0.8rem; }
+  .filter-list { list-style: none; margin-bottom: 2rem; }
+  .filter-list li { margin-bottom: 0.2rem; }
+  .filter-btn { width: 100%; text-align: left; background: none; border: none; padding: 0.55rem 0.8rem; border-radius: 8px; font-family: var(--font-sans); font-size: 0.875rem; color: var(--ink-mid); cursor: pointer; transition: all 0.2s; display: flex; justify-content: space-between; align-items: center; }
+  .filter-btn:hover, .filter-btn.active { background: var(--rose-pale); color: var(--rose-deep); }
+  .filter-count { font-size: 0.72rem; background: var(--rose-light); color: var(--rose-deep); border-radius: 99px; padding: 0.1rem 0.5rem; }
+  .filter-btn.active .filter-count { background: var(--rose); color: white; }
+  .profile-card { background: white; border-radius: 14px; padding: 1.4rem; border: 1px solid oklch(90% 0.014 50); }
+  .profile-card h4 { font-family: var(--font-serif); font-size: 0.95rem; font-weight: 500; color: var(--ink); margin-bottom: 0.3rem; }
+  .profile-card p { font-size: 0.8rem; color: var(--ink-soft); line-height: 1.6; margin-bottom: 0.8rem; }
+  .orcid-link { display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: var(--rose); text-decoration: none; font-weight: 500; }
+  .orcid-link:hover { text-decoration: underline; }
+
+  .pubs-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+  .pubs-header h2 { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 500; color: var(--ink); }
+  html[lang="bn"] .pubs-header h2 { font-family: var(--font-bn); }
+  .search-box { display: flex; align-items: center; gap: 0.5rem; border: 1.5px solid oklch(87% 0.015 50); border-radius: 99px; padding: 0.4rem 0.9rem; background: white; }
+  .search-box input { border: none; outline: none; font-family: var(--font-sans); font-size: 0.85rem; color: var(--ink); background: transparent; width: 160px; }
+  .search-box svg { stroke: var(--ink-soft); flex-shrink: 0; }
+
+  .year-group { margin-bottom: 3rem; }
+  .year-label { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+  .year-label span { font-family: var(--font-serif); font-size: 1.5rem; color: var(--rose); font-weight: 600; }
+  .year-label::after { content: ''; flex: 1; height: 1px; background: oklch(90% 0.014 50); }
+
+  .pub-card { background: white; border-radius: 16px; padding: 1.8rem 2rem; border: 1px solid oklch(91% 0.014 50); margin-bottom: 1rem; transition: box-shadow 0.25s, transform 0.25s; }
+  .pub-card:hover { box-shadow: 0 8px 32px oklch(20% 0.02 50 / 0.07); transform: translateY(-2px); }
+  .pub-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 0.8rem; }
+  .pub-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; flex-shrink: 0; }
+  .pub-tag { font-size: 0.7rem; font-weight: 500; padding: 0.18rem 0.65rem; border-radius: 99px; }
+  .tag-peer { background: var(--rose-pale); color: var(--rose-deep); }
+  .tag-review { background: oklch(93% 0.02 72); color: oklch(45% 0.1 72); }
+  .tag-orig { background: oklch(92% 0.02 220); color: oklch(40% 0.1 220); }
+  .pub-title { font-family: var(--font-serif); font-size: 1.02rem; font-weight: 500; color: var(--ink); line-height: 1.45; }
+  html[lang="bn"] .pub-title { font-family: var(--font-bn); font-size: 0.95rem; }
+  .pub-meta { font-size: 0.82rem; color: var(--ink-soft); margin-bottom: 0.8rem; }
+  .pub-meta strong { color: var(--ink-mid); font-weight: 500; }
+  .pub-abstract { font-size: 0.85rem; color: var(--ink-mid); line-height: 1.75; display: none; margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid oklch(92% 0.012 50); }
+  .pub-abstract.open { display: block; }
+  .pub-actions { display: flex; gap: 0.8rem; align-items: center; }
+  .pub-action-btn { background: none; border: 1px solid oklch(87% 0.015 50); border-radius: 99px; padding: 0.3rem 0.9rem; font-family: var(--font-sans); font-size: 0.78rem; color: var(--ink-mid); cursor: pointer; transition: all 0.2s; }
+  .pub-action-btn:hover { border-color: var(--rose); color: var(--rose-deep); }
+
+  .pres-list { margin-top: 1rem; }
+  .pres-item { display: flex; gap: 1.5rem; padding: 1.2rem 0; border-bottom: 1px solid oklch(92% 0.012 50); align-items: flex-start; }
+  .pres-year { font-family: var(--font-serif); font-size: 0.9rem; color: var(--rose); font-weight: 500; min-width: 44px; padding-top: 0.1rem; }
+  .pres-body { font-size: 0.88rem; color: var(--ink-mid); line-height: 1.6; }
+  .pres-body strong { color: var(--ink); font-weight: 500; }
+  .pres-venue { font-size: 0.78rem; color: var(--ink-soft); margin-top: 0.2rem; font-style: italic; }
+
+  .section-divider { height: 1px; background: oklch(90% 0.014 50); margin: 3rem 0; }
+  .section-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 1.5rem; }
+
+  .cta-band { background: linear-gradient(135deg, var(--rose) 0%, var(--rose-deep) 100%); border-radius: 20px; padding: 3rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; margin-top: 3rem; }
+  .cta-band h2 { font-family: var(--font-serif); font-size: 1.6rem; color: white; font-weight: 500; }
+  html[lang="bn"] .cta-band h2 { font-family: var(--font-bn); }
+  .cta-band p { color: oklch(92% 0.025 15); font-size: 0.92rem; margin-top: 0.3rem; }
+  .btn-white { background: white; color: var(--rose-deep); border: none; border-radius: 99px; padding: 0.85rem 2rem; font-size: 0.95rem; font-weight: 500; cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-block; white-space: nowrap; }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+
+  footer { background: oklch(16% 0.012 50); color: oklch(55% 0.01 50); padding: 2rem clamp(1.5rem,6vw,4rem); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  footer .footer-brand { font-family: var(--font-serif); color: oklch(75% 0.01 50); font-size: 0.95rem; }
+  footer p { font-size: 0.8rem; }
+  .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">Dr. Farzana Deeba</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="Services.html">Services</a></li>
+    <li><a href="Research.html" class="active">Research</a></li>
+    <li><a href="Blog.html">Blog</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" id="btn-bn" onclick="setLang('bn')">বাং</button>
+    </div>
+    <a href="index.html#contact" class="nav-cta" id="nav-cta-text">Book Appointment</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html" id="bread-home">Home</a> / <span id="bread-current">Research</span></div>
+    <h1 id="hero-title">Research &amp; Publications</h1>
+    <p id="hero-sub">Peer-reviewed publications, conference presentations, and academic contributions advancing women's reproductive health in Bangladesh.</p>
+    <div class="stats-row">
+      <div><div class="stat-num">12+</div><div class="stat-label" id="stat-pubs">Publications</div></div>
+      <div><div class="stat-num">8</div><div class="stat-label" id="stat-conf">Conference Papers</div></div>
+      <div><div class="stat-num">15+</div><div class="stat-label" id="stat-years">Years Research</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="research-main">
+  <aside class="sidebar fade-up">
+    <h3 id="filter-label">Filter by Topic</h3>
+    <ul class="filter-list" id="filter-list"></ul>
+    <div class="profile-card">
+      <h4 id="profile-title">Academic Profile</h4>
+      <p id="profile-pos">Associate Professor, Dept. of Gynae &amp; Obs, BSMMU, Dhaka</p>
+      <a href="#" class="orcid-link">
+        <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="7"/><path d="M6 5v6M10 5a3 3 0 0 1 0 6H6"/></svg>
+        <span id="orcid-text">ORCID Profile</span>
+      </a>
+    </div>
+  </aside>
+
+  <div class="pubs-section">
+    <div class="pubs-header">
+      <h2 id="pubs-heading">Journal Publications</h2>
+      <div class="search-box">
+        <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke-width="1.8"><circle cx="7" cy="7" r="5"/><path d="M11 11l3 3"/></svg>
+        <input type="text" id="search-input" placeholder="Search..." oninput="searchPubs(this.value)">
+      </div>
+    </div>
+    <div id="pubs-list"></div>
+    <div class="section-divider"></div>
+    <p class="section-label" id="conf-label">Conference Presentations</p>
+    <div class="pres-list fade-up" id="pres-list"></div>
+    <div class="cta-band fade-up">
+      <div>
+        <h2 id="cta-title">Have a research enquiry?</h2>
+        <p id="cta-sub">Dr. Deeba welcomes collaboration with researchers and academic institutions.</p>
+      </div>
+      <a href="index.html#contact" class="btn-white" id="cta-btn">Get in Touch</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-brand">Dr. Farzana Deeba</span>
+  <p>© 2025 · Gynaecologist &amp; Infertility Specialist · Dhaka</p>
+</footer>
+
+<script src="site-content.js"></script>
+<script>
+let currentLang = 'en';
+let currentFilter = 'all';
+let searchQuery = '';
+
+const TOPICS = {
+  all:          { en: 'All Publications', bn: 'সব প্রকাশনা' },
+  infertility:  { en: 'Infertility',      bn: 'বন্ধ্যাত্ব' },
+  endocrinology:{ en: 'Endocrinology',    bn: 'এন্ডোক্রাইনোলজি' },
+  surgery:      { en: 'Surgery',          bn: 'অস্ত্রোপচার' },
+  pregnancy:    { en: 'Pregnancy',        bn: 'গর্ভাবস্থা' },
+};
+
+const TAG_CLASS = { 'Peer Reviewed': 'tag-peer', 'Original Article': 'tag-orig', 'Review': 'tag-review' };
+
+const UI = {
+  en: {
+    navCta: 'Book Appointment', breadHome: 'Home', breadCurrent: 'Research',
+    heroTitle: 'Research &amp; Publications',
+    heroSub: "Peer-reviewed publications, conference presentations, and academic contributions advancing women's reproductive health in Bangladesh.",
+    statPubs: 'Publications', statConf: 'Conference Papers', statYears: 'Years Research',
+    filterLabel: 'Filter by Topic', profileTitle: 'Academic Profile',
+    profilePos: 'Associate Professor, Dept. of Gynae &amp; Obs, BSMMU, Dhaka',
+    orcid: 'ORCID Profile', pubsHeading: 'Journal Publications',
+    confLabel: 'Conference Presentations',
+    viewAbstract: 'View Abstract', hideAbstract: 'Hide Abstract',
+    ctaTitle: 'Have a research enquiry?',
+    ctaSub: 'Dr. Deeba welcomes collaboration with researchers and academic institutions.',
+    ctaBtn: 'Get in Touch', search: 'Search...',
+  },
+  bn: {
+    navCta: 'অ্যাপয়েন্টমেন্ট নিন', breadHome: 'হোম', breadCurrent: 'গবেষণা',
+    heroTitle: 'গবেষণা ও প্রকাশনা',
+    heroSub: 'বাংলাদেশে নারীর প্রজনন স্বাস্থ্য উন্নয়নে পিয়ার-রিভিউড প্রকাশনা, সম্মেলন উপস্থাপনা ও একাডেমিক অবদান।',
+    statPubs: 'প্রকাশনা', statConf: 'সম্মেলন পেপার', statYears: 'বছরের গবেষণা',
+    filterLabel: 'বিষয় অনুসারে ফিল্টার করুন', profileTitle: 'একাডেমিক প্রোফাইল',
+    profilePos: 'সহযোগী অধ্যাপক, গাইনি এন্ড অবস বিভাগ, বিএসএমএমইউ, ঢাকা',
+    orcid: 'ওআরসিআইডি প্রোফাইল', pubsHeading: 'জার্নাল প্রকাশনা',
+    confLabel: 'সম্মেলন উপস্থাপনা',
+    viewAbstract: 'সার সংক্ষেপ দেখুন', hideAbstract: 'সংক্ষেপ লুকান',
+    ctaTitle: 'গবেষণা সম্পর্কিত জিজ্ঞাসা আছে?',
+    ctaSub: 'ডাঃ দীবা গবেষক ও একাডেমিক প্রতিষ্ঠানের সাথে সহযোগিতাকে স্বাগত জানান।',
+    ctaBtn: 'যোগাযোগ করুন', search: 'অনুসন্ধান...',
+  }
+};
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-bn').classList.toggle('active', lang === 'bn');
+  applyUI();
+  renderAll();
+}
+
+function applyUI() {
+  const u = UI[currentLang];
+  document.getElementById('nav-cta-text').textContent = u.navCta;
+  document.getElementById('bread-home').textContent = u.breadHome;
+  document.getElementById('bread-current').textContent = u.breadCurrent;
+  document.getElementById('hero-title').innerHTML = u.heroTitle;
+  document.getElementById('hero-sub').textContent = u.heroSub;
+  document.getElementById('stat-pubs').textContent = u.statPubs;
+  document.getElementById('stat-conf').textContent = u.statConf;
+  document.getElementById('stat-years').textContent = u.statYears;
+  document.getElementById('filter-label').textContent = u.filterLabel;
+  document.getElementById('profile-title').textContent = u.profileTitle;
+  document.getElementById('profile-pos').innerHTML = u.profilePos;
+  document.getElementById('orcid-text').textContent = u.orcid;
+  document.getElementById('pubs-heading').textContent = u.pubsHeading;
+  document.getElementById('conf-label').textContent = u.confLabel;
+  document.getElementById('search-input').placeholder = u.search;
+  document.getElementById('cta-title').textContent = u.ctaTitle;
+  document.getElementById('cta-sub').textContent = u.ctaSub;
+  document.getElementById('cta-btn').textContent = u.ctaBtn;
+}
+
+function renderAll() {
+  renderFilters();
+  renderPubs();
+  renderPresentations();
+}
+
+function renderFilters() {
+  const lang = currentLang;
+  const counts = {};
+  RESEARCH_PUBS.forEach(p => { counts[p.topic] = (counts[p.topic]||0)+1; });
+  const total = RESEARCH_PUBS.length;
+  const fl = document.getElementById('filter-list');
+  fl.innerHTML = Object.entries(TOPICS).map(([key, labels]) => {
+    const c = key === 'all' ? total : (counts[key]||0);
+    return `<li><button class="filter-btn ${currentFilter===key?'active':''}" onclick="filterPubs('${key}')">
+      ${labels[lang]} <span class="filter-count">${c}</span>
+    </button></li>`;
+  }).join('');
+}
+
+function renderPubs() {
+  const lang = currentLang;
+  const u = UI[lang];
+  let pubs = RESEARCH_PUBS.filter(p =>
+    (currentFilter === 'all' || p.topic === currentFilter) &&
+    (!searchQuery || (lang==='bn'?p.titleBn:p.titleEn).toLowerCase().includes(searchQuery))
+  );
+
+  // Group by year
+  const byYear = {};
+  pubs.forEach(p => { (byYear[p.year] = byYear[p.year]||[]).push(p); });
+  const years = Object.keys(byYear).sort((a,b) => b-a);
+
+  document.getElementById('pubs-list').innerHTML = years.map(yr => `
+    <div class="year-group fade-up">
+      <div class="year-label"><span>${yr}</span></div>
+      ${byYear[yr].map((p, i) => {
+        const tagClass = TAG_CLASS[p.type] || 'tag-orig';
+        const journal = lang==='bn' ? p.journalBn : p.journalEn;
+        const volume = lang==='bn' ? p.volumeBn : p.volumeEn;
+        const title = lang==='bn' ? p.titleBn : p.titleEn;
+        const abstract = lang==='bn' ? p.abstractBn : p.abstractEn;
+        const uid = `abs-${yr}-${i}`;
+        return `
+        <div class="pub-card" data-topic="${p.topic}">
+          <div class="pub-card-top">
+            <div class="pub-title">${title}</div>
+            <div class="pub-tags"><span class="pub-tag ${tagClass}">${p.type}</span></div>
+          </div>
+          <div class="pub-meta"><strong>${journal}</strong>${volume ? ' · ' + volume : ''}</div>
+          <div class="pub-actions">
+            <button class="pub-action-btn" onclick="toggleAbstract('${uid}', this)">${u.viewAbstract}</button>
+          </div>
+          <div class="pub-abstract" id="${uid}">${abstract}</div>
+        </div>`;
+      }).join('')}
+    </div>`).join('') || `<p style="color:var(--ink-soft);padding:2rem 0;">${lang==='bn'?'কোনো ফলাফল পাওয়া যায়নি':'No results found.'}</p>`;
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+}
+
+function renderPresentations() {
+  const lang = currentLang;
+  document.getElementById('pres-list').innerHTML = PRESENTATIONS.map(p => `
+    <div class="pres-item">
+      <div class="pres-year">${p.year}</div>
+      <div class="pres-body">
+        <strong>${lang==='bn'?p.titleBn:p.titleEn}</strong>
+        <div class="pres-venue">${lang==='bn'?p.venueBn:p.venueEn}</div>
+      </div>
+    </div>`).join('');
+}
+
+function filterPubs(topic) {
+  currentFilter = topic;
+  renderAll();
+}
+
+function searchPubs(q) {
+  searchQuery = q.toLowerCase();
+  renderPubs();
+}
+
+function toggleAbstract(id, btn) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+  const u = UI[currentLang];
+  btn.textContent = el.classList.contains('open') ? u.hideAbstract : u.viewAbstract;
+}
+
+const observer = new IntersectionObserver(entries => entries.forEach(e => {
+  if (e.isIntersecting) e.target.classList.add('visible');
+}), { threshold: 0.08 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+applyUI();
+renderAll();
+</script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — Dr. Farzana Deeba</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&family=Noto+Sans+Bengali:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="site-content.js"></script>
+<style>
+  :root {
+    --cream: oklch(97% 0.012 60);
+    --cream-deep: oklch(93% 0.018 55);
+    --rose: oklch(66% 0.09 15);
+    --rose-deep: oklch(52% 0.11 14);
+    --rose-light: oklch(92% 0.025 15);
+    --rose-pale: oklch(96% 0.015 20);
+    --ink: oklch(20% 0.018 50);
+    --ink-mid: oklch(40% 0.016 50);
+    --ink-soft: oklch(58% 0.014 50);
+    --gold: oklch(74% 0.08 72);
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'DM Sans', system-ui, sans-serif;
+    --font-bn: 'Noto Sans Bengali', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+  html[lang="bn"] body, html[lang="bn"] h1, html[lang="bn"] h2, html[lang="bn"] h3, html[lang="bn"] h4, html[lang="bn"] p, html[lang="bn"] a, html[lang="bn"] button, html[lang="bn"] span, html[lang="bn"] label, html[lang="bn"] li { font-family: var(--font-bn); }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,246,240,0.93); backdrop-filter: blur(12px); border-bottom: 1px solid oklch(88% 0.018 55); padding: 0 clamp(1.5rem,5vw,4rem); height: 68px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-brand { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+  html[lang="bn"] .nav-brand { font-family: var(--font-bn); }
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--ink-mid); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--rose-deep); }
+  .nav-right { display: flex; align-items: center; gap: 1rem; }
+  .lang-toggle { display: flex; border-radius: 99px; border: 1.5px solid var(--rose); overflow: hidden; background: white; cursor: pointer; }
+  .lang-btn { padding: 0.3rem 0.75rem; border: none; cursor: pointer; background: transparent; color: var(--ink-soft); font-family: var(--font-sans); font-size: 0.8rem; transition: all 0.2s; }
+  .lang-btn.active { background: var(--rose); color: white; }
+  .lang-btn:last-child { font-family: var(--font-bn); }
+  .nav-cta { background: var(--rose); color: white; border: none; border-radius: 99px; padding: 0.45rem 1.25rem; font-size: 0.85rem; cursor: pointer; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
+  .nav-cta:hover { background: var(--rose-deep); }
+  @media (max-width: 768px) { .nav-links { display: none; } }
+
+  /* PAGE HERO */
+  .page-hero {
+    padding-top: 68px; background: linear-gradient(135deg, var(--cream) 55%, var(--rose-pale) 100%);
+    padding-bottom: 0; overflow: hidden;
+  }
+  .page-hero-inner {
+    max-width: 1200px; margin: 0 auto;
+    padding: clamp(3rem,6vw,5rem) clamp(1.5rem,6vw,6rem);
+    display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 2rem;
+  }
+  .breadcrumb { font-size: 0.8rem; color: var(--ink-soft); margin-bottom: 1rem; }
+  .breadcrumb a { color: var(--rose); text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .page-hero h1 { font-family: var(--font-serif); font-size: clamp(2.2rem,4vw,3.4rem); font-weight: 500; color: var(--ink); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 0.8rem; }
+  html[lang="bn"] .page-hero h1 { font-family: var(--font-bn); font-size: clamp(1.7rem,3.5vw,2.6rem); }
+  .page-hero p { font-size: 1.05rem; color: var(--ink-mid); max-width: 560px; }
+  .hero-stat-row { display: flex; gap: 2.5rem; padding: 2rem 0 0; }
+  .hero-stat { text-align: center; }
+  .hero-stat-num { font-family: var(--font-serif); font-size: 2rem; color: var(--rose); font-weight: 600; line-height: 1; }
+  .hero-stat-label { font-size: 0.75rem; color: var(--ink-soft); margin-top: 0.25rem; }
+  html[lang="bn"] .hero-stat-label { font-family: var(--font-bn); }
+  .hero-wave { width: 100%; height: 60px; display: block; margin-bottom: -2px; }
+
+  /* MAIN CONTENT */
+  .services-main { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.5rem,6vw,6rem) clamp(4rem,8vw,6rem); }
+
+  /* SERVICE DETAIL */
+  .service-detail {
+    display: grid; grid-template-columns: 1fr 1.6fr; gap: clamp(2rem,5vw,5rem);
+    padding: clamp(3rem,5vw,4.5rem) 0; border-bottom: 1px solid oklch(90% 0.014 50);
+    align-items: start;
+  }
+  .service-detail:last-child { border-bottom: none; }
+  .service-detail.reverse { direction: rtl; }
+  .service-detail.reverse > * { direction: ltr; }
+  .service-sidebar { position: sticky; top: 90px; }
+  .service-num { font-family: var(--font-serif); font-size: 3.5rem; color: var(--rose-light); font-weight: 700; line-height: 1; margin-bottom: 1rem; }
+  .service-icon-lg { width: 64px; height: 64px; border-radius: 16px; background: var(--rose-pale); display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; }
+  .service-icon-lg svg { width: 32px; height: 32px; stroke: var(--rose-deep); fill: none; stroke-width: 1.5; }
+  .service-sidebar h2 { font-family: var(--font-serif); font-size: clamp(1.3rem,2.5vw,1.8rem); font-weight: 500; color: var(--ink); line-height: 1.2; margin-bottom: 0.6rem; }
+  html[lang="bn"] .service-sidebar h2 { font-family: var(--font-bn); font-size: clamp(1.1rem,2vw,1.5rem); }
+  .service-badge { display: inline-block; background: var(--rose); color: white; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.25rem 0.8rem; border-radius: 99px; margin-bottom: 1rem; }
+  .service-body p { color: var(--ink-mid); margin-bottom: 1.2rem; font-size: 0.97rem; line-height: 1.85; }
+  .service-body h3 { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 500; color: var(--ink); margin: 1.8rem 0 0.8rem; }
+  html[lang="bn"] .service-body h3 { font-family: var(--font-bn); }
+  .checklist { list-style: none; margin-bottom: 1.2rem; }
+  .checklist li { display: flex; gap: 0.7rem; align-items: flex-start; padding: 0.4rem 0; font-size: 0.9rem; color: var(--ink-mid); }
+  .checklist li::before { content: ''; display: block; width: 18px; height: 18px; border-radius: 50%; background: var(--rose-pale); border: 1.5px solid var(--rose); flex-shrink: 0; margin-top: 0.18rem; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpolyline points='2,5 4,7 8,3' stroke='%23c8716a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-size: 12px; background-position: center; }
+  .faq-item { border: 1px solid oklch(90% 0.014 50); border-radius: 12px; margin-bottom: 0.75rem; overflow: hidden; }
+  .faq-q { width: 100%; background: none; border: none; padding: 1rem 1.2rem; text-align: left; font-family: var(--font-sans); font-size: 0.9rem; font-weight: 500; color: var(--ink); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+  html[lang="bn"] .faq-q { font-family: var(--font-bn); }
+  .faq-q:hover { background: var(--rose-pale); }
+  .faq-q svg { flex-shrink: 0; transition: transform 0.3s; stroke: var(--rose); }
+  .faq-q.open svg { transform: rotate(180deg); }
+  .faq-a { display: none; padding: 0 1.2rem 1rem; font-size: 0.875rem; color: var(--ink-mid); line-height: 1.75; }
+  .faq-a.open { display: block; }
+
+  /* CTA BAND */
+  .cta-band { background: linear-gradient(135deg, var(--rose) 0%, var(--rose-deep) 100%); border-radius: 20px; padding: clamp(2.5rem,5vw,4rem) clamp(2rem,4vw,3.5rem); display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; margin: clamp(3rem,6vw,5rem) 0; }
+  .cta-band h2 { font-family: var(--font-serif); font-size: clamp(1.5rem,3vw,2rem); color: white; font-weight: 500; }
+  html[lang="bn"] .cta-band h2 { font-family: var(--font-bn); }
+  .cta-band p { color: oklch(92% 0.025 15); font-size: 0.95rem; margin-top: 0.4rem; }
+  .btn-white { background: white; color: var(--rose-deep); border: none; border-radius: 99px; padding: 0.85rem 2rem; font-size: 0.95rem; font-weight: 500; cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-block; white-space: nowrap; }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+
+  /* FOOTER */
+  footer { background: oklch(16% 0.012 50); color: oklch(55% 0.01 50); padding: 2rem clamp(1.5rem,6vw,4rem); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  footer .footer-brand { font-family: var(--font-serif); color: oklch(75% 0.01 50); font-size: 0.95rem; }
+  html[lang="bn"] footer .footer-brand { font-family: var(--font-bn); }
+  footer p { font-size: 0.8rem; }
+
+  .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .fade-up.visible { opacity: 1; transform: none; }
+  .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; }
+
+  @media (max-width: 768px) {
+    .service-detail { grid-template-columns: 1fr; }
+    .service-detail.reverse { direction: ltr; }
+    .service-sidebar { position: static; }
+    .page-hero-inner { grid-template-columns: 1fr; }
+    .hero-stat-row { gap: 1.5rem; }
+    .cta-band { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand" data-en="Dr. Farzana Deeba" data-bn="ডাঃ ফারজানা দীবা">Dr. Farzana Deeba</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about" data-en="About" data-bn="সম্পর্কে">About</a></li>
+    <li><a href="Services.html" class="active" data-en="Services" data-bn="সেবাসমূহ">Services</a></li>
+    <li><a href="Research.html" data-en="Research" data-bn="গবেষণা">Research</a></li>
+    <li><a href="Blog.html" data-en="Blog" data-bn="ব্লগ">Blog</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" id="btn-bn" onclick="setLang('bn')">বাং</button>
+    </div>
+    <a href="index.html#contact" class="nav-cta" data-en="Book Appointment" data-bn="অ্যাপয়েন্টমেন্ট নিন">Book Appointment</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div>
+      <div class="breadcrumb"><a href="index.html" data-en="Home" data-bn="হোম">Home</a> / <span data-en="Services" data-bn="সেবাসমূহ">Services</span></div>
+      <h1 data-en="Specialist Care<br>You Can Trust" data-bn="বিশ্বস্ত বিশেষজ্ঞ সেবা">Specialist Care<br>You Can Trust</h1>
+      <p data-en="Comprehensive women's health services — from routine gynaecological care to advanced infertility treatment and minimally invasive surgery." data-bn="সামগ্রিক নারী স্বাস্থ্যসেবা — সাধারণ গাইনোকোলজি থেকে উন্নত বন্ধ্যাত্ব চিকিৎসা ও ন্যূনতম আক্রমণমূলক অস্ত্রোপচার পর্যন্ত।">Comprehensive women's health services — from routine gynaecological care to advanced infertility treatment and minimally invasive surgery.</p>
+    </div>
+    <div class="hero-stat-row">
+      <div class="hero-stat"><div class="hero-stat-num">6</div><div class="hero-stat-label" data-en="Specialities" data-bn="বিশেষত্ব">Specialities</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">15+</div><div class="hero-stat-label" data-en="Yrs Experience" data-bn="বছরের অভিজ্ঞতা">Yrs Experience</div></div>
+    </div>
+  </div>
+  <svg class="hero-wave" viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="var(--cream)"/></svg>
+</div>
+
+<div class="services-main">
+
+  <!-- 1. Infertility -->
+  <div class="service-detail fade-up">
+    <div class="service-sidebar">
+      <div class="service-num">01</div>
+      <div class="service-icon-lg"><svg viewBox="0 0 24 24"><path d="M12 21c-4.97 0-9-4.03-9-9s4.03-9 9-9 9 4.03 9 9-4.03 9-9 9z"/><path d="M8 12h8M12 8v8"/></svg></div>
+      <span class="service-badge" data-en="Core Specialty" data-bn="মূল বিশেষত্ব">Core Specialty</span>
+      <h2 data-en="Infertility Assessment &amp; Treatment" data-bn="বন্ধ্যাত্ব মূল্যায়ন ও চিকিৎসা">Infertility Assessment &amp; Treatment</h2>
+    </div>
+    <div class="service-body">
+      <p data-en="Infertility affects approximately 1 in 6 couples. Dr. Deeba's approach begins with a thorough, systematic evaluation of both partners before developing a personalised treatment pathway that balances clinical evidence with each couple's individual circumstances." data-bn="বন্ধ্যাত্ব প্রতি ৬ দম্পতির মধ্যে প্রায় ১ দম্পতিকে প্রভাবিত করে। ডাঃ দীবার পদ্ধতি উভয় অংশীদারের পুঙ্খানুপুঙ্খ মূল্যায়ন দিয়ে শুরু হয়, তারপর প্রতিটি দম্পতির পরিস্থিতির সাথে মানানসই ব্যক্তিগতকৃত চিকিৎসা পরিকল্পনা তৈরি করা হয়।">Infertility affects approximately 1 in 6 couples. Dr. Deeba's approach begins with a thorough, systematic evaluation of both partners before developing a personalised treatment pathway that balances clinical evidence with each couple's individual circumstances.</p>
+      <h3 data-en="What the Assessment Includes" data-bn="মূল্যায়নে যা অন্তর্ভুক্ত">What the Assessment Includes</h3>
+      <ul class="checklist">
+        <li data-en="Detailed clinical history and physical examination" data-bn="বিস্তারিত ক্লিনিক্যাল ইতিহাস ও শারীরিক পরীক্ষা">Detailed clinical history and physical examination</li>
+        <li data-en="Hormonal profile: FSH, LH, AMH, TSH, prolactin" data-bn="হরমোনাল প্রোফাইল: এফএসএইচ, এলএইচ, এএমএইচ, টিএসএইচ, প্রোল্যাকটিন">Hormonal profile: FSH, LH, AMH, TSH, prolactin</li>
+        <li data-en="Transvaginal ultrasound (antral follicle count, uterine assessment)" data-bn="ট্রান্সভ্যাজিনাল আল্ট্রাসাউন্ড (অ্যান্ট্রাল ফলিকল কাউন্ট, জরায়ু মূল্যায়ন)">Transvaginal ultrasound (antral follicle count, uterine assessment)</li>
+        <li data-en="Hysterosalpingography (HSG) for tubal patency" data-bn="টিউবাল পেটেন্সির জন্য হিস্টেরোসালপিঙ্গোগ্রাফি (এইচএসজি)">Hysterosalpingography (HSG) for tubal patency</li>
+        <li data-en="Semen analysis and male factor evaluation" data-bn="শুক্রাণু বিশ্লেষণ ও পুরুষ কারণ মূল্যায়ন">Semen analysis and male factor evaluation</li>
+        <li data-en="Genetic screening where indicated" data-bn="প্রয়োজনে জেনেটিক স্ক্রিনিং">Genetic screening where indicated</li>
+      </ul>
+      <h3 data-en="Treatment Options" data-bn="চিকিৎসার বিকল্পসমূহ">Treatment Options</h3>
+      <ul class="checklist">
+        <li data-en="Ovulation induction and timed intercourse" data-bn="ওভুলেশন ইনডাকশন ও নির্ধারিত মিলন">Ovulation induction and timed intercourse</li>
+        <li data-en="Intrauterine Insemination (IUI)" data-bn="ইন্ট্রাউটেরিন ইনসেমিনেশন (আইইউআই)">Intrauterine Insemination (IUI)</li>
+        <li data-en="In-Vitro Fertilisation (IVF) coordination and support" data-bn="ইন-ভিট্রো ফার্টিলাইজেশন (আইভিএফ) সমন্বয় ও সহায়তা">In-Vitro Fertilisation (IVF) coordination and support</li>
+        <li data-en="Surgical correction of anatomical factors (laparoscopy, hysteroscopy)" data-bn="শারীরতাত্ত্বিক কারণের অস্ত্রোপচারিক সংশোধন (ল্যাপারোস্কোপি, হিস্টেরোস্কোপি)">Surgical correction of anatomical factors (laparoscopy, hysteroscopy)</li>
+      </ul>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" data-en="How long should we try before seeking help?" data-bn="সাহায্য নেওয়ার আগে আমাদের কতদিন চেষ্টা করা উচিত?">How long should we try before seeking help? <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg></button><div class="faq-a" data-en="Generally, couples under 35 are advised to try for 12 months before consulting a specialist. Those over 35, or with known conditions such as PCOS, endometriosis, or irregular cycles, should seek evaluation after 6 months — or sooner if there are clear risk factors." data-bn="সাধারণত, ৩৫ বছরের কম বয়সী দম্পতিদের বিশেষজ্ঞের সাথে পরামর্শ করার আগে ১২ মাস চেষ্টা করার পরামর্শ দেওয়া হয়। যাদের বয়স ৩৫ এর বেশি, বা যাদের পিসিওএস, এন্ডোমেট্রিওসিস বা অনিয়মিত মাসিকের মতো পরিচিত সমস্যা আছে, তাদের ৬ মাস পরে মূল্যায়ন নেওয়া উচিত।">Generally, couples under 35 are advised to try for 12 months before consulting a specialist. Those over 35, or with known conditions such as PCOS, endometriosis, or irregular cycles, should seek evaluation after 6 months — or sooner if there are clear risk factors.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" data-en="Is infertility always a female issue?" data-bn="বন্ধ্যাত্ব কি সবসময় নারীর সমস্যা?">Is infertility always a female issue? <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg></button><div class="faq-a" data-en="No. Male factors account for approximately 40% of infertility cases. Dr. Deeba evaluates both partners and coordinates with andrologists as needed to ensure a complete picture before recommending treatment." data-bn="না। পুরুষ কারণ প্রায় ৪০% বন্ধ্যাত্ব ক্ষেত্রের জন্য দায়ী। ডাঃ দীবা উভয় অংশীদারকে মূল্যায়ন করেন এবং চিকিৎসা সুপারিশ করার আগে সম্পূর্ণ চিত্র নিশ্চিত করতে প্রয়োজনীয় অ্যান্ড্রোলজিস্টদের সাথে সমন্বয় করেন।">No. Male factors account for approximately 40% of infertility cases. Dr. Deeba evaluates both partners and coordinates with andrologists as needed to ensure a complete picture before recommending treatment.</div></div>
+    </div>
+  </div>
+
+  <!-- 2. Reproductive Endocrinology -->
+  <div class="service-detail reverse fade-up">
+    <div class="service-sidebar">
+      <div class="service-num">02</div>
+      <div class="service-icon-lg"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg></div>
+      <span class="service-badge" data-en="Subspecialty" data-bn="উপবিশেষত্ব">Subspecialty</span>
+      <h2 data-en="Reproductive Endocrinology" data-bn="প্রজনন এন্ডোক্রাইনোলজি">Reproductive Endocrinology</h2>
+    </div>
+    <div class="service-body">
+      <p data-en="Hormonal disorders are among the most common causes of menstrual irregularity, infertility, and metabolic dysfunction in women. Dr. Deeba holds a fellowship in Reproductive Endocrinology &amp; Infertility (FCPS REI), allowing her to diagnose and manage complex hormonal conditions with precision." data-bn="হরমোনজনিত ব্যাধি নারীদের মাসিকের অনিয়ম, বন্ধ্যাত্ব এবং বিপাকীয় কর্মহীনতার সবচেয়ে সাধারণ কারণগুলির মধ্যে একটি। ডাঃ দীবার প্রজনন এন্ডোক্রাইনোলজি ও বন্ধ্যাত্বে ফেলোশিপ (এফসিপিএস আরইআই) রয়েছে, যা তাকে জটিল হরমোনজনিত অবস্থা নির্ণয় ও পরিচালনা করতে সক্ষম করে।">Hormonal disorders are among the most common causes of menstrual irregularity, infertility, and metabolic dysfunction in women. Dr. Deeba holds a fellowship in Reproductive Endocrinology &amp; Infertility (FCPS REI), allowing her to diagnose and manage complex hormonal conditions with precision.</p>
+      <h3 data-en="Conditions Treated" data-bn="চিকিৎসযোগ্য অবস্থাসমূহ">Conditions Treated</h3>
+      <ul class="checklist">
+        <li data-en="Polycystic Ovary Syndrome (PCOS)" data-bn="পলিসিস্টিক ওভারি সিনড্রোম (পিসিওএস)">Polycystic Ovary Syndrome (PCOS)</li>
+        <li data-en="Hypothyroidism and hyperthyroidism" data-bn="হাইপোথাইরয়েডিজম ও হাইপারথাইরয়েডিজম">Hypothyroidism and hyperthyroidism</li>
+        <li data-en="Hyperprolactinaemia" data-bn="হাইপারপ্রোল্যাকটিনেমিয়া">Hyperprolactinaemia</li>
+        <li data-en="Premature ovarian insufficiency (POI)" data-bn="অকাল ডিম্বাশয়ের অপর্যাপ্ততা (পিওআই)">Premature ovarian insufficiency (POI)</li>
+        <li data-en="Adrenal disorders affecting reproduction" data-bn="প্রজননকে প্রভাবিত করা অ্যাড্রিনাল ব্যাধি">Adrenal disorders affecting reproduction</li>
+        <li data-en="Insulin resistance and metabolic syndrome" data-bn="ইনসুলিন প্রতিরোধ ও মেটাবলিক সিনড্রোম">Insulin resistance and metabolic syndrome</li>
+      </ul>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" data-en="Can PCOS be cured?" data-bn="পিসিওএস কি নিরাময় করা যায়?">Can PCOS be cured? <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg></button><div class="faq-a" data-en="PCOS cannot be cured, but it can be very effectively managed. With the right combination of lifestyle modification, medication, and — where needed — ovulation induction, most women with PCOS can conceive and manage their long-term metabolic health." data-bn="পিসিওএস নিরাময় করা যায় না, তবে এটি খুব কার্যকরভাবে পরিচালনা করা যায়। সঠিক জীবনযাত্রার পরিবর্তন, ওষুধ এবং প্রয়োজনে ওভুলেশন ইনডাকশনের সমন্বয়ে পিসিওএস আক্রান্ত অধিকাংশ নারী গর্ভধারণ করতে এবং দীর্ঘমেয়াদী বিপাকীয় স্বাস্থ্য পরিচালনা করতে পারেন।">PCOS cannot be cured, but it can be very effectively managed. With the right combination of lifestyle modification, medication, and — where needed — ovulation induction, most women with PCOS can conceive and manage their long-term metabolic health.</div></div>
+    </div>
+  </div>
+
+  <!-- 3. General Gynae -->
+  <div class="service-detail fade-up">
+    <div class="service-sidebar">
+      <div class="service-num">03</div>
+      <div class="service-icon-lg"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      <span class="service-badge" data-en="General Care" data-bn="সাধারণ সেবা">General Care</span>
+      <h2 data-en="General Gynaecological Care" data-bn="সাধারণ গাইনোকোলজি সেবা">General Gynaecological Care</h2>
+    </div>
+    <div class="service-body">
+      <p data-en="Routine gynaecological health should not be deferred. Dr. Deeba provides comprehensive general gynaecological consultations for women at every life stage — from adolescence through menopause — with particular attention to early detection and preventive care." data-bn="নিয়মিত গাইনোকোলজিক্যাল স্বাস্থ্য পিছিয়ে দেওয়া উচিত নয়। ডাঃ দীবা বয়ঃসন্ধি থেকে মেনোপজ পর্যন্ত প্রতিটি জীবন পর্যায়ে নারীদের জন্য সামগ্রিক সাধারণ গাইনোকোলজিক্যাল পরামর্শ প্রদান করেন।">Routine gynaecological health should not be deferred. Dr. Deeba provides comprehensive general gynaecological consultations for women at every life stage — from adolescence through menopause — with particular attention to early detection and preventive care.</p>
+      <ul class="checklist">
+        <li data-en="Annual pelvic examination and cervical smear (Pap test)" data-bn="বার্ষিক পেলভিক পরীক্ষা ও সার্ভিক্যাল স্মিয়ার (প্যাপ পরীক্ষা)">Annual pelvic examination and cervical smear (Pap test)</li>
+        <li data-en="Menstrual disorder management (heavy, irregular, painful periods)" data-bn="মাসিকের সমস্যা ব্যবস্থাপনা (অতিরিক্ত, অনিয়মিত, বেদনাদায়ক মাসিক)">Menstrual disorder management (heavy, irregular, painful periods)</li>
+        <li data-en="Uterine fibroids and ovarian cyst evaluation" data-bn="জরায়ুর ফাইব্রয়েড ও ওভারিয়ান সিস্ট মূল্যায়ন">Uterine fibroids and ovarian cyst evaluation</li>
+        <li data-en="Endometriosis diagnosis and management" data-bn="এন্ডোমেট্রিওসিস নির্ণয় ও ব্যবস্থাপনা">Endometriosis diagnosis and management</li>
+        <li data-en="Contraception counselling and family planning" data-bn="গর্ভনিরোধ পরামর্শ ও পরিবার পরিকল্পনা">Contraception counselling and family planning</li>
+        <li data-en="Menopausal transition and HRT guidance" data-bn="মেনোপজাল পরিবর্তন ও এইচআরটি নির্দেশনা">Menopausal transition and HRT guidance</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 4. Laparoscopic Surgery -->
+  <div class="service-detail reverse fade-up">
+    <div class="service-sidebar">
+      <div class="service-num">04</div>
+      <div class="service-icon-lg"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <span class="service-badge" data-en="Surgical" data-bn="অস্ত্রোপচার">Surgical</span>
+      <h2 data-en="Laparoscopic Surgery" data-bn="ল্যাপারোস্কোপিক সার্জারি">Laparoscopic Surgery</h2>
+    </div>
+    <div class="service-body">
+      <p data-en="Minimally invasive surgery offers patients faster recovery, smaller incisions, and reduced risk of complications compared to open surgery. Dr. Deeba is experienced in a range of laparoscopic and hysteroscopic procedures for both diagnostic and operative purposes." data-bn="ন্যূনতম আক্রমণমূলক অস্ত্রোপচার রোগীদের দ্রুত সুস্থতা, ছোট ছেদ এবং খোলা অস্ত্রোপচারের তুলনায় জটিলতার কম ঝুঁকি প্রদান করে। ডাঃ দীবা ডায়াগনস্টিক এবং অপারেটিভ উদ্দেশ্যে বিভিন্ন ল্যাপারোস্কোপিক ও হিস্টেরোস্কোপিক পদ্ধতিতে অভিজ্ঞ।">Minimally invasive surgery offers patients faster recovery, smaller incisions, and reduced risk of complications compared to open surgery. Dr. Deeba is experienced in a range of laparoscopic and hysteroscopic procedures for both diagnostic and operative purposes.</p>
+      <h3 data-en="Procedures Performed" data-bn="সম্পাদিত পদ্ধতিসমূহ">Procedures Performed</h3>
+      <ul class="checklist">
+        <li data-en="Laparoscopic cystectomy (ovarian cyst removal)" data-bn="ল্যাপারোস্কোপিক সিস্টেক্টমি (ওভারিয়ান সিস্ট অপসারণ)">Laparoscopic cystectomy (ovarian cyst removal)</li>
+        <li data-en="Endometriosis resection and ablation" data-bn="এন্ডোমেট্রিওসিস রিসেকশন ও অ্যাবলেশন">Endometriosis resection and ablation</li>
+        <li data-en="Diagnostic laparoscopy for unexplained pain or infertility" data-bn="অব্যাখ্যাত ব্যথা বা বন্ধ্যাত্বের জন্য ডায়াগনস্টিক ল্যাপারোস্কোপি">Diagnostic laparoscopy for unexplained pain or infertility</li>
+        <li data-en="Myomectomy (fibroid removal)" data-bn="মায়োমেক্টমি (ফাইব্রয়েড অপসারণ)">Myomectomy (fibroid removal)</li>
+        <li data-en="Hysteroscopic polypectomy and septum resection" data-bn="হিস্টেরোস্কোপিক পলিপেক্টমি ও সেপ্টাম রিসেকশন">Hysteroscopic polypectomy and septum resection</li>
+        <li data-en="Salpingectomy for ectopic pregnancy" data-bn="একটোপিক গর্ভাবস্থার জন্য স্যালপিঙ্গেক্টমি">Salpingectomy for ectopic pregnancy</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 5. High-Risk Pregnancy -->
+  <div class="service-detail fade-up">
+    <div class="service-sidebar">
+      <div class="service-num">05</div>
+      <div class="service-icon-lg"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+      <span class="service-badge" data-en="Obstetrics" data-bn="প্রসূতি">Obstetrics</span>
+      <h2 data-en="High-Risk Pregnancy" data-bn="উচ্চ ঝুঁকির গর্ভাবস্থা">High-Risk Pregnancy</h2>
+    </div>
+    <div class="service-body">
+      <p data-en="A high-risk pregnancy designation means closer monitoring and a coordinated care plan — not necessarily a complicated outcome. Dr. Deeba works with patients to manage medical, obstetric, and fetal risk factors throughout pregnancy with close follow-up and specialist oversight." data-bn="উচ্চ ঝুঁকির গর্ভাবস্থার পদবী মানে ঘনিষ্ঠ পর্যবেক্ষণ ও সমন্বিত যত্ন পরিকল্পনা — জটিল ফলাফল নয়। ডাঃ দীবা গর্ভাবস্থা জুড়ে চিকিৎসা, প্রসূতি এবং ভ্রূণের ঝুঁকির কারণগুলি পরিচালনা করতে রোগীদের সাথে কাজ করেন।">A high-risk pregnancy designation means closer monitoring and a coordinated care plan — not necessarily a complicated outcome. Dr. Deeba works with patients to manage medical, obstetric, and fetal risk factors throughout pregnancy with close follow-up and specialist oversight.</p>
+      <ul class="checklist">
+        <li data-en="Gestational diabetes and pre-existing diabetes" data-bn="গেস্টেশনাল ডায়াবেটিস ও পূর্ব-বিদ্যমান ডায়াবেটিস">Gestational diabetes and pre-existing diabetes</li>
+        <li data-en="Hypertension and pre-eclampsia" data-bn="উচ্চ রক্তচাপ ও প্রি-এক্ল্যাম্পসিয়া">Hypertension and pre-eclampsia</li>
+        <li data-en="Multiple gestation (twins, triplets)" data-bn="একাধিক গর্ভ (যমজ, তিনজন)">Multiple gestation (twins, triplets)</li>
+        <li data-en="Prior pregnancy loss or recurrent miscarriage" data-bn="পূর্ববর্তী গর্ভপাত বা বারবার গর্ভপাত">Prior pregnancy loss or recurrent miscarriage</li>
+        <li data-en="Placenta praevia and placental abnormalities" data-bn="প্লাসেন্টা প্রিভিয়া ও প্লাসেন্টাল অস্বাভাবিকতা">Placenta praevia and placental abnormalities</li>
+        <li data-en="Advanced maternal age (35+)" data-bn="উন্নত মাতৃ বয়স (৩৫+)">Advanced maternal age (35+)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 6. Counselling -->
+  <div class="service-detail reverse fade-up">
+    <div class="service-sidebar">
+      <div class="service-num">06</div>
+      <div class="service-icon-lg"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+      <span class="service-badge" data-en="Counselling" data-bn="পরামর্শ">Counselling</span>
+      <h2 data-en="Reproductive Health Counselling" data-bn="প্রজনন স্বাস্থ্য পরামর্শ">Reproductive Health Counselling</h2>
+    </div>
+    <div class="service-body">
+      <p data-en="The emotional dimension of reproductive health — whether navigating infertility, pregnancy loss, or fertility preservation — requires as much attention as the clinical. Dr. Deeba's consultations are built around open, unhurried conversation, ensuring patients and their partners feel fully informed and supported." data-bn="প্রজনন স্বাস্থ্যের আবেগময় মাত্রা — বন্ধ্যাত্ব, গর্ভপাত বা উর্বরতা সংরক্ষণ — ক্লিনিক্যালের মতো সমান মনোযোগের দাবি রাখে। ডাঃ দীবার পরামর্শ খোলামেলা, তাড়াহুড়ো-মুক্ত কথোপকথনের উপর ভিত্তি করে গড়ে উঠেছে।">The emotional dimension of reproductive health — whether navigating infertility, pregnancy loss, or fertility preservation — requires as much attention as the clinical. Dr. Deeba's consultations are built around open, unhurried conversation, ensuring patients and their partners feel fully informed and supported.</p>
+      <ul class="checklist">
+        <li data-en="Infertility counselling for individuals and couples" data-bn="ব্যক্তি ও দম্পতিদের জন্য বন্ধ্যাত্ব পরামর্শ">Infertility counselling for individuals and couples</li>
+        <li data-en="Recurrent pregnancy loss and grief support" data-bn="বারবার গর্ভপাত ও শোক সহায়তা">Recurrent pregnancy loss and grief support</li>
+        <li data-en="Fertility preservation options and counselling" data-bn="উর্বরতা সংরক্ষণের বিকল্প ও পরামর্শ">Fertility preservation options and counselling</li>
+        <li data-en="Pre-conception health planning" data-bn="গর্ভধারণ-পূর্ব স্বাস্থ্য পরিকল্পনা">Pre-conception health planning</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CTA BAND -->
+  <div class="cta-band fade-up">
+    <div>
+      <h2 data-en="Ready to book a consultation?" data-bn="পরামর্শ বুক করতে প্রস্তুত?">Ready to book a consultation?</h2>
+      <p data-en="Appointments available 4:00 PM – 8:00 PM · Call 01753-843987 one day prior" data-bn="অ্যাপয়েন্টমেন্ট পাওয়া যায় বিকাল ৪টা – রাত ৮টা · একদিন আগে ০১৭৫৩-৮৪৩৯৮৭-এ কল করুন" id="services-cta-note">Appointments available 4:00 PM – 8:00 PM · Call 01753-843987 one day prior</p>
+    </div>
+    <a href="index.html#contact" class="btn-white" data-en="Book an Appointment" data-bn="অ্যাপয়েন্টমেন্ট নিন">Book an Appointment</a>
+  </div>
+
+</div>
+
+<footer>
+  <span class="footer-brand" data-en="Dr. Farzana Deeba" data-bn="ডাঃ ফারজানা দীবা">Dr. Farzana Deeba</span>
+  <p data-en="© 2025 · Gynaecologist &amp; Infertility Specialist · Dhaka" data-bn="© ২০২৫ · গাইনোকোলজিস্ট ও বন্ধ্যাত্ব বিশেষজ্ঞ · ঢাকা">© 2025 · Gynaecologist &amp; Infertility Specialist · Dhaka</p>
+</footer>
+
+<script>
+  function setLang(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-bn').classList.toggle('active', lang === 'bn');
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const val = el.getAttribute('data-' + lang);
+      if (val !== null) el.innerHTML = val;
+    });
+    document.querySelectorAll('[data-placeholder-en]').forEach(el => {
+      el.placeholder = el.getAttribute('data-placeholder-' + lang) || el.placeholder;
+    });
+    renderContactNote(lang);
+  }
+  let currentLang = 'en';
+  function renderContactNote(lang) {
+    const el = document.getElementById('services-cta-note');
+    if (!el || !window.CONTACT) return;
+    const c = CONTACT;
+    el.innerHTML = lang === 'bn'
+      ? `অ্যাপয়েন্টমেন্ট: ${c.hoursBn.replace('<br>',' · ')} · কল করুন ${c.phone}`
+      : `Appointments: ${c.hoursEn.replace('<br>',' · ')} · Call ${c.phone} one day prior`;
+  }
+  renderContactNote('en');
+  function toggleFaq(btn) {
+    const a = btn.nextElementSibling;
+    const lang = document.documentElement.lang || 'en';
+    const val = a.getAttribute('data-' + lang);
+    if (val) a.textContent = val;
+    btn.classList.toggle('open');
+    a.classList.toggle('open');
+  }
+  const observer = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
