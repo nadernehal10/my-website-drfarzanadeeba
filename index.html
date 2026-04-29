@@ -595,7 +595,11 @@
 
   /* RESPONSIVE */
   @media (max-width: 900px) {
-    .hero { grid-template-columns: 1fr; padding-right: clamp(2rem, 6vw, 4rem); }
+    .hero {
+      grid-template-columns: 1fr;
+      padding-right: clamp(1.5rem, 6vw, 4rem);
+      padding-left: clamp(1.5rem, 6vw, 4rem);
+    }
     .hero-image { display: none; }
     .about-grid { grid-template-columns: 1fr; }
     .about-image-col { display: none; }
@@ -603,13 +607,44 @@
     .blog-grid { grid-template-columns: 1fr 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
     .nav-links { display: none; }
+    .nav-cta { display: none; }
     .hamburger { display: flex; }
   }
+
   @media (max-width: 600px) {
     .services-grid { grid-template-columns: 1fr; }
     .blog-grid { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
     .quals-grid { grid-template-columns: 1fr; }
+
+    .hero { padding-bottom: 3rem; }
+    .hero h1 { font-size: clamp(2rem, 9vw, 2.8rem); }
+    html[lang="bn"] .hero h1 { font-size: clamp(1.6rem, 8vw, 2.2rem); }
+    .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.08em; }
+    .hero-desc { font-size: 0.97rem; }
+    .hero-btns { flex-direction: column; }
+    .hero-btns .btn-primary,
+    .hero-btns .btn-ghost { text-align: center; }
+
+    .how-to-book { padding: 1.5rem 1.25rem; }
+    .contact-form { padding: 1.5rem 1.25rem; }
+
+    .pub-item { grid-template-columns: 44px 1fr; gap: 0.75rem; }
+
+    footer { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+
+    #tweaks-panel { right: 0.75rem; bottom: 0.75rem; min-width: 190px; }
+
+    section { padding-left: 1.25rem; padding-right: 1.25rem; }
+  }
+
+  @media (max-width: 400px) {
+    nav { padding: 0 1rem; }
+    .lang-btn { padding: 0.28rem 0.55rem; font-size: 0.75rem; }
+    .hero h1 { font-size: 1.85rem; }
+    .section-heading { font-size: 1.65rem; }
+    .service-card { padding: 1.5rem 1.25rem; }
+    .blog-body { padding: 1.1rem; }
   }
 
   /* MOBILE NAV */
@@ -1040,8 +1075,8 @@
 <!-- FOOTER -->
 <footer>
   <span class="footer-brand" data-en="Dr. Farzana Deeba" data-bn="ডাঃ ফারজানা দীবা">Dr. Farzana Deeba</span>
-  <p data-en="© 2025 · Gynaecologist &amp; Infertility Specialist · Dhaka, Bangladesh" data-bn="© ২০২৫ · গাইনোকোলজিস্ট ও বন্ধ্যাত্ব বিশেষজ্ঞ · ঢাকা, বাংলাদেশ">
-    © 2025 · Gynaecologist &amp; Infertility Specialist · Dhaka, Bangladesh
+  <p data-en="© 2025 · Reproductive Endocrinology &amp; Infertility Specialist · Dhaka, Bangladesh" data-bn="© ২০২৫ · প্রজনন এন্ডোক্রাইনোলজি ও বন্ধ্যাত্ব বিশেষজ্ঞ · ঢাকা, বাংলাদেশ">
+    © 2025 · Reproductive Endocrinology &amp; Infertility Specialist · Dhaka, Bangladesh
   </p>
 </footer>
 
