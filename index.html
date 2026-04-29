@@ -654,6 +654,30 @@
     .blog-body { padding: 1.1rem; }
   }
 
+  /* MOBILE PHOTO STRIP */
+  .mobile-photo-strip {
+    display: none;
+  }
+  @media (max-width: 900px) {
+    .mobile-photo-strip {
+      display: block;
+      width: 100%;
+      height: 420px;
+      overflow: hidden;
+      background: var(--cream-deep);
+    }
+    .mobile-photo-strip img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+  }
+  @media (max-width: 600px) {
+    .mobile-photo-strip { height: 340px; }
+  }
+
   /* BACK TO TOP */
   #back-to-top {
     display: none;
@@ -745,6 +769,11 @@
     </div>
   </div>
 </section>
+
+<!-- MOBILE PHOTO STRIP -->
+<div class="mobile-photo-strip" aria-hidden="true">
+  <img src="dr_farzana_deeba_photo.jpeg" alt="Dr. Farzana Deeba">
+</div>
 
 <!-- ABOUT -->
 <section id="about" aria-labelledby="about-heading">
