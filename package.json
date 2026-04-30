@@ -1,0 +1,15 @@
+{
+  "name": "my-website-drfarzanadeeba",
+  "version": "1.0.0",
+  "description": "Dr. Farzana Deeba's professional website",
+  "scripts": {
+    "build": "echo 'Static HTML site - no build needed'",
+    "lint": "echo 'No linting configured'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/speed-insights": "^1.0.12"
+  }
+}
