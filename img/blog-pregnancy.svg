@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" fill="none">
+  <rect width="800" height="400" fill="oklch(96% 0.015 20)"></rect>
+  <circle cx="680" cy="340" r="220" fill="oklch(92% 0.025 15)" opacity="0.35"></circle>
+  <circle cx="80" cy="80" r="140" fill="oklch(93% 0.018 55)" opacity="0.35"></circle>
+
+  
+  <ellipse cx="400" cy="108" rx="38" ry="42" fill="oklch(88% 0.025 15)"></ellipse>
+  <path d="M362 145 Q340 175 335 210 Q330 250 345 290 L370 310 Q400 320 430 310 L455 290 Q470 250 465 210 Q460 175 438 145 Z" fill="oklch(88% 0.025 15)"></path>
+  
+  <ellipse cx="400" cy="248" rx="58" ry="52" fill="oklch(84% 0.03 15)"></ellipse>
+
+  
+  <circle cx="400" cy="248" r="32" fill="white" opacity="0.6"></circle>
+  <circle cx="400" cy="238" r="12" fill="oklch(74% 0.08 72)" opacity="0.5"></circle>
+  <path d="M388 252 Q400 268 412 252" stroke="oklch(66% 0.09 15)" stroke-width="1.5" stroke-linecap="round" opacity="0.6"></path>
+
+  
+  <path d="M160 200 L210 200 L225 170 L240 230 L255 185 L270 200 L640 200" stroke="oklch(66% 0.09 15)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"></path>
+
+  
+  <rect x="590" y="130" width="50" height="12" rx="6" fill="oklch(66% 0.09 15)" opacity="0.25"></rect>
+  <rect x="609" y="111" width="12" height="50" rx="6" fill="oklch(66% 0.09 15)" opacity="0.25"></rect>
+
+  
+  <circle cx="200" cy="140" r="5" fill="oklch(74% 0.08 72)" opacity="0.6"></circle>
+  <circle cx="220" cy="160" r="3" fill="oklch(66% 0.09 15)" opacity="0.4"></circle>
+  <circle cx="580" cy="270" r="5" fill="oklch(74% 0.08 72)" opacity="0.5"></circle>
+  <circle cx="600" cy="255" r="3" fill="oklch(66% 0.09 15)" opacity="0.4"></circle>
+
+  
+  <path d="M160 280 L163 272 L166 280 L174 283 L166 286 L163 294 L160 286 L152 283 Z" fill="oklch(74% 0.08 72)" opacity="0.5"></path>
+  <path d="M630 150 L633 142 L636 150 L644 153 L636 156 L633 164 L630 156 L622 153 Z" fill="oklch(66% 0.09 15)" opacity="0.3"></path>
+
+  <text x="400" y="350" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="oklch(52% 0.11 14)" letter-spacing="3" opacity="0.7">HIGH-RISK PREGNANCY CARE</text>
+</svg>
