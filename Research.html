@@ -54,7 +54,22 @@
   .stat-label { font-size: 0.78rem; color: oklch(60% 0.01 50); margin-top: 0.2rem; letter-spacing: 0.05em; }
 
   .research-main { max-width: 1100px; margin: 0 auto; padding: clamp(3rem,6vw,5rem) clamp(1.5rem,6vw,6rem); display: grid; grid-template-columns: 260px 1fr; gap: 4rem; align-items: start; }
-  @media (max-width: 900px) { .research-main { grid-template-columns: 1fr; gap: 2.5rem; } }
+  @media (max-width: 900px) {
+    .research-main { grid-template-columns: 1fr; gap: 2rem; }
+    .sidebar { position: static; top: auto; }
+    .pubs-header { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+    .search-box { width: 100%; }
+    .search-box input { width: 100%; }
+  }
+  @media (max-width: 600px) {
+    .pub-card { padding: 1.2rem 1rem; }
+    .pub-card-top { flex-direction: column; gap: 0.5rem; }
+    .pub-tags { flex-shrink: unset; }
+    .cta-band { padding: 1.8rem 1.4rem; }
+    .cta-band h2 { font-size: 1.2rem; }
+    .stats-row { gap: 1.5rem; }
+    .stat-num { font-size: 1.7rem; }
+  }
 
   .sidebar { position: sticky; top: 86px; }
   .sidebar h3 { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 0.8rem; }
