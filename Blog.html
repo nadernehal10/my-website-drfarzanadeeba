@@ -396,6 +396,7 @@ function openArticle(id) {
   const u = UI[lang];
   const post = BLOG_POSTS.find(p => p.id === id);
   if (!post) return;
+  if (post.externalUrl) { window.location.href = post.externalUrl; return; }
   const catLabel = CATS[post.category][lang];
   const content = document.getElementById('article-content');
   content.innerHTML = `
