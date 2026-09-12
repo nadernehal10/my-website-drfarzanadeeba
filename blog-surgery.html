@@ -17,6 +17,8 @@ nav{position:sticky;top:0;z-index:100;height:64px;display:flex;align-items:cente
 .nav-back{font-size:13px;color:var(--ink-soft);text-decoration:none;}
 .nav-back:hover{color:var(--ink);}
 .container{max-width:740px;margin:0 auto;padding:0 clamp(1.5rem,5vw,3rem);}
+.hero-illustration{width:100%;border-radius:16px;overflow:hidden;margin-bottom:2rem;}
+.hero-illustration svg{width:100%;height:auto;display:block;}
 .article-hero{padding:clamp(3rem,6vw,5rem) 0 clamp(2rem,4vw,3rem);}
 .article-cat{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--rose-deep);margin-bottom:1rem;display:block;}
 .article-title{font-family:var(--font-serif);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:500;line-height:1.2;letter-spacing:-0.02em;color:var(--ink);margin-bottom:1.2rem;}
@@ -45,10 +47,7 @@ nav{position:sticky;top:0;z-index:100;height:64px;display:flex;align-items:cente
 .cta-btn{display:inline-block;background:var(--rose);color:white;padding:10px 24px;border-radius:99px;font-size:14px;font-weight:500;text-decoration:none;}
 footer{border-top:1px solid var(--divider);padding:2rem 0;text-align:center;}
 footer p{font-size:13px;color:var(--ink-soft);}
-footer a{color:var(--rose-deep);text-decoration:none;}
-  .hero-illustration{width:100%;border-radius:16px;overflow:hidden;margin-bottom:2rem;}
-  .hero-illustration svg{width:100%;height:auto;display:block;}
-</style>
+footer a{color:var(--rose-deep);text-decoration:none;}</style>
 </head>
 <body>
 <nav>
@@ -58,24 +57,72 @@ footer a{color:var(--rose-deep);text-decoration:none;}
 <article itemscope itemtype="https://schema.org/Article">
   <div class="container">
     <div class="article-hero">
+      <div class="hero-illustration">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" fill="none">
+  <rect width="800" height="400" fill="oklch(96% 0.015 20)"></rect>
+  <circle cx="650" cy="60" r="190" fill="oklch(93% 0.018 55)" opacity="0.3"></circle>
+  <circle cx="120" cy="360" r="150" fill="oklch(92% 0.025 15)" opacity="0.3"></circle>
+
+  
+  <ellipse cx="400" cy="210" rx="155" ry="110" fill="white" stroke="oklch(88% 0.018 55)" stroke-width="2"></ellipse>
+
+  
+  <rect x="300" y="100" width="10" height="110" rx="5" fill="oklch(74% 0.08 72)" transform="rotate(-20 300 100)"></rect>
+  <circle cx="308" cy="205" r="8" fill="oklch(52% 0.11 14)" opacity="0.7"></circle>
+  
+  <circle cx="312" cy="208" r="4" fill="white" opacity="0.9"></circle>
+
+  
+  <rect x="460" y="95" width="10" height="120" rx="5" fill="oklch(66% 0.09 15)" transform="rotate(18 460 95)"></rect>
+  <circle cx="484" cy="210" r="7" fill="oklch(52% 0.11 14)" opacity="0.6"></circle>
+
+  
+  <ellipse cx="350" cy="160" rx="6" ry="3" fill="oklch(84% 0.03 15)" stroke="oklch(66% 0.09 15)" stroke-width="1"></ellipse>
+  <ellipse cx="450" cy="158" rx="6" ry="3" fill="oklch(84% 0.03 15)" stroke="oklch(66% 0.09 15)" stroke-width="1"></ellipse>
+  <ellipse cx="400" cy="148" rx="6" ry="3" fill="oklch(84% 0.03 15)" stroke="oklch(66% 0.09 15)" stroke-width="1"></ellipse>
+
+  
+  <rect x="570" y="130" width="160" height="110" rx="10" fill="oklch(20% 0.018 50)"></rect>
+  <rect x="578" y="138" width="144" height="80" rx="6" fill="oklch(16% 0.012 50)"></rect>
+  
+  <circle cx="650" cy="178" r="30" fill="oklch(25% 0.015 150)" opacity="0.8"></circle>
+  <circle cx="650" cy="178" r="20" stroke="oklch(66% 0.09 15)" stroke-width="1" opacity="0.6"></circle>
+  
+  <line x1="635" y1="178" x2="665" y2="178" stroke="oklch(66% 0.09 15)" stroke-width="1" opacity="0.5"></line>
+  <line x1="650" y1="163" x2="650" y2="193" stroke="oklch(66% 0.09 15)" stroke-width="1" opacity="0.5"></line>
+  
+  <rect x="635" y="240" width="30" height="8" rx="2" fill="oklch(35% 0.015 50)"></rect>
+  <rect x="618" y="248" width="64" height="5" rx="2" fill="oklch(35% 0.015 50)"></rect>
+
+  
+  <circle cx="584" cy="214" r="3" fill="oklch(66% 0.09 15)"></circle>
+  <circle cx="596" cy="214" r="3" fill="oklch(74% 0.08 72)"></circle>
+  <circle cx="608" cy="214" r="3" fill="oklch(55% 0.12 150)"></circle>
+
+  
+  <circle cx="380" cy="240" r="6" stroke="oklch(66% 0.09 15)" stroke-width="1" opacity="0.3"></circle>
+  <circle cx="400" cy="225" r="4" stroke="oklch(66% 0.09 15)" stroke-width="1" opacity="0.25"></circle>
+  <circle cx="420" cy="245" r="5" stroke="oklch(66% 0.09 15)" stroke-width="1" opacity="0.3"></circle>
+
+  <text x="400" y="355" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="oklch(52% 0.11 14)" letter-spacing="3" opacity="0.7">LAPAROSCOPIC SURGERY</text>
+</svg>
+      </div>
       <span class="article-cat">Surgery</span>
       <h1 class="article-title" itemprop="headline">What Is Laparoscopic Surgery? A Patient's Guide</h1>
       <p class="article-sub">Keyhole surgery demystified — what it involves, how to prepare, and what recovery looks like.</p>
       <div class="article-meta">
         <span class="meta-author" itemprop="author">Dr. Farzana Deeba</span>
-        <span class="meta-date">July 2024</span>
+        <span class="meta-date">June 2024</span>
         <span class="meta-read">6 min</span>
       </div>
     </div>
     <div class="article-body" itemprop="articleBody">
-
-      <p>Laparoscopic surgery — commonly called "keyhole surgery" — has transformed gynaecological surgery over the past three decades. Procedures that once required large abdominal incisions and weeks of recovery are now routinely performed through incisions smaller than a fingernail.</p>
+<p>Laparoscopic surgery — commonly called "keyhole surgery" — has transformed gynaecological surgery over the past three decades. Procedures that once required large abdominal incisions and weeks of recovery are now routinely performed through incisions smaller than a fingernail.</p>
       <h2>How Does Laparoscopy Work?</h2>
       <p>The surgeon makes 2–4 small incisions (usually 5–12mm) in the abdomen. Carbon dioxide gas inflates the abdominal cavity. A thin camera (laparoscope) is inserted, allowing the surgeon to see the pelvic organs on a high-definition monitor. Surgical instruments are passed through remaining incisions.</p>
       <div class="callout"><p>Most laparoscopic procedures in gynaecology take between 30 minutes and 2 hours. The majority of patients are discharged the same day or after one overnight stay.</p></div>
       <h2>Recovery</h2>
       <p>Most patients experience mild shoulder pain from the gas (which resolves in 1–2 days), and some abdominal soreness for a week. Return to light activity is usually possible within 3–5 days.</p>
-    
       <div class="divider"></div>
       <div class="author-card">
         <div class="author-avatar"><img src="dr_farzana_deeba_photo.jpeg" alt="Dr. Farzana Deeba"/></div>
