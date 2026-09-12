@@ -327,7 +327,15 @@ function imgSlot(post, cls, h) {
 function renderListing() {
   const lang = currentLang;
   const u = UI[lang];
-  const posts = BLOG_POSTS.filter(p => currentFilter === 'all' || p.category === currentFilter);
+  let posts = BLOG_POSTS.filter(p => currentFilter === 'all' || p.category === currentFilter);
+  // Apply search filter
+  if (searchQuery) {
+    posts = posts.filter(p => {
+      const title = (lang === 'bn' ? p.titleBn : p.titleEn).toLowerCase();
+      const excerpt = (lang === 'bn' ? p.excerptBn : p.excerptEn).toLowerCase();
+      return title.includes(searchQuery) || excerpt.includes(searchQuery);
+    });
+  }
   const featured = posts.find(p => p.featured);
   const grid = posts.filter(p => !p.featured);
 
@@ -357,6 +365,11 @@ function renderListing() {
 
   // Grid
   const grid_el = document.getElementById('articles-grid');
+  if (posts.length === 0) {
+    document.getElementById('featured-slot').innerHTML = '';
+    grid_el.innerHTML = '<div class="no-results">No articles found' + (searchQuery ? ' for "<strong>' + searchQuery + '</strong>"' : '') + '</div>';
+    return;
+  }
   grid_el.innerHTML = grid.map(p => {
     const catLabel = CATS[p.category][lang];
     return `
@@ -475,46 +488,7 @@ if (searchClear) {
   });
 }
 
-// Patch renderListing to apply search filter
-const _origRender = renderListing;
-function renderListing() {
-  if (!searchQuery) { _origRender(); return; }
-  const lang = currentLang;
-  const u = UI[lang];
-  const posts = BLOG_POSTS.filter(p => {
-    const title = (lang === 'bn' ? p.titleBn : p.titleEn).toLowerCase();
-    const excerpt = (lang === 'bn' ? p.excerptBn : p.excerptEn).toLowerCase();
-    return title.includes(searchQuery) || excerpt.includes(searchQuery);
-  });
-  document.getElementById('featured-slot').innerHTML = '';
-  const grid_el = document.getElementById('articles-grid');
-  if (posts.length === 0) {
-    grid_el.innerHTML = '<div class="no-results">No articles found for "<strong>' + searchQuery + '</strong>"</div>';
-    return;
-  }
-  grid_el.innerHTML = posts.map(p => {
-    const catLabel = CATS[p.category] ? CATS[p.category][lang] : '';
-    return `
-      <div class="article-card fade-up" onclick="openArticle('${p.id}')">
-        <div class="article-img" style="background:${CAT_COLORS[p.category]||'linear-gradient(135deg,#f5e8e7,#fdf0ee)'}">
-          <div class="article-img-label" style="opacity:0.6;font-size:0.75rem;color:#8a4440;font-family:serif;font-style:italic;">${catLabel}</div>
-        </div>
-        <div class="article-body">
-          <div class="article-cat">${catLabel}</div>
-          <h3>${lang==='bn'?p.titleBn:p.titleEn}</h3>
-          <p>${lang==='bn'?p.excerptBn:p.excerptEn}</p>
-        </div>
-        <div class="article-footer">
-          <span class="article-meta">${lang==='bn'?p.dateBn:p.date} · ${p.readTime} ${u.minRead}</span>
-          <a href="#" class="read-more" onclick="event.stopPropagation();openArticle('${p.id}')">${u.read}</a>
-        </div>
-      </div>`;
-  }).join('');
-  document.querySelectorAll('.fade-up').forEach(el => {
-    const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible'); }), {threshold:0.1});
-    obs.observe(el);
-  });
-}
+
 
 </script>
 </body>
