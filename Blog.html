@@ -347,8 +347,8 @@ function renderListing() {
     const catLabel = (CATS[featured.category] || CATS.general)[lang];
     fs.innerHTML = `
       <div class="featured-article fade-up" onclick="openArticle('${featured.id}')">
-        <div class="featured-img" style="background:${CAT_COLORS[featured.category]||'linear-gradient(135deg,#f5e8e7,#fdf0ee)'}">
-          <div class="featured-img-label" style="opacity:0.7;font-size:1rem;color:#8a4440;font-family:serif;font-style:italic;">${CATS[featured.category]?CATS[featured.category][lang]:'Health'}</div>
+        <div class="featured-img">
+          ${featured.image ? `<img src="${featured.image}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">` : `<div style="width:100%;height:100%;background:${CAT_COLORS[featured.category]||'linear-gradient(135deg,#f5e8e7,#fdf0ee)'};"></div>`}
           <div class="featured-badge">${u.featured}</div>
         </div>
         <div class="featured-body">
