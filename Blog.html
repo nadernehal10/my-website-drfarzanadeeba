@@ -411,17 +411,15 @@ function renderSidebar() {
 
 function filterCat(cat) {
   currentFilter = cat;
-  closeArticle();
   renderAll();
 }
+
+function closeArticle() {}
 
 function openArticle(id) {
   const post = BLOG_POSTS.find(p => p.id === id);
   if (!post) return;
   window.location.href = post.externalUrl || ('blog-' + id + '.html');
-}
-
-);
 }
 if (searchClear) {
   searchClear.addEventListener('click', () => {
