@@ -227,6 +227,7 @@
 <script>
 let currentLang = 'en';
 let currentFilter = 'all';
+let searchQuery = '';
 
 const CATS = {
   all:       { en: 'All Topics',      bn: 'সব বিষয়' },
@@ -468,7 +469,7 @@ applyUI();
 renderAll();
 
 // ── SEARCH ─────────────────────────────────────────────────
-let searchQuery = '';
+
 const searchInput = document.getElementById('blog-search');
 const searchClear = document.getElementById('search-clear');
 
