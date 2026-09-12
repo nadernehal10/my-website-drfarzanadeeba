@@ -424,6 +424,8 @@ function openArticle(id) {
   if (!post) return;
   window.location.href = post.externalUrl || ('blog-' + id + '.html');
 }
+const searchInput = document.getElementById("blog-search");
+const searchClear = document.getElementById("search-clear");
 if (searchClear) {
   searchClear.addEventListener('click', () => {
     searchInput.value = '';
