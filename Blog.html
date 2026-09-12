@@ -421,6 +421,15 @@ function openArticle(id) {
   if (!post) return;
   window.location.href = post.externalUrl || ('blog-' + id + '.html');
 }
+const searchInput = document.getElementById("blog-search");
+const searchClear = document.getElementById("search-clear");
+if (searchInput) {
+  searchInput.addEventListener("input", (e) => {
+    searchQuery = e.target.value.toLowerCase().trim();
+    if (searchClear) searchClear.classList.toggle("visible", searchQuery.length > 0);
+    renderAll();
+  });
+}
 if (searchClear) {
   searchClear.addEventListener('click', () => {
     searchInput.value = '';
