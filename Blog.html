@@ -3,9 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Women's Health & Infertility Articles — Dr. Farzana Deeba | Dhaka</title>
-<meta name="description" content="Expert articles on infertility, IUI treatment, PCOS, high-risk pregnancy and women's health by Dr. Farzana Deeba — leading infertility specialist and gynaecologist in Dhaka, Bangladesh."/>
-<meta name="keywords" content="infertility articles Bangladesh, IUI guide Dhaka, PCOS treatment advice, women health Bangladesh, gynaecology blog Dhaka, Dr Farzana Deeba articles"/>
+<title>Health Articles — Dr. Farzana Deeba</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Noto+Sans+Bengali:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -79,15 +77,6 @@
 
   /* GRID */
   .articles-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
-
-  /* SEARCH */
-  .search-wrap { position: relative; margin-bottom: 1.5rem; }
-  .search-input { width: 100%; padding: 12px 44px 12px 16px; border: 1.5px solid oklch(88% 0.018 55); border-radius: 99px; font-family: var(--font-sans); font-size: 14px; color: var(--ink); background: white; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
-  .search-input:focus { border-color: var(--rose); box-shadow: 0 0 0 3px oklch(66% 0.09 15 / 0.10); }
-  .search-icon { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--ink-soft); pointer-events: none; }
-  .search-clear { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: var(--ink-soft); font-size: 16px; display: none; }
-  .search-clear.visible { display: block; }
-  .no-results { text-align: center; padding: 3rem 1rem; color: var(--ink-soft); font-size: 14px; }
   @media (max-width: 600px) { .articles-grid { grid-template-columns: 1fr; } .featured-article { grid-template-columns: 1fr; } }
   .article-card { background: white; border-radius: 16px; overflow: hidden; border: 1px solid oklch(91% 0.014 50); cursor: pointer; transition: box-shadow 0.25s, transform 0.25s; }
   .article-card:hover { box-shadow: 0 8px 32px oklch(20% 0.02 50 / 0.08); transform: translateY(-3px); }
@@ -190,7 +179,14 @@
       <div id="featured-slot"></div>
       <div class="articles-grid" id="articles-grid"></div>
     </div>
-          </div>
+    <div id="detail-view" class="article-detail">
+      <div class="article-detail-inner">
+        <button class="back-btn" onclick="closeArticle()">
+          <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 3L5 8l5 5"/></svg>
+          <span id="back-btn-text">Back to Articles</span>
+        </button>
+        <div id="article-content"></div>
+      </div>
     </div>
   </div>
 
@@ -230,17 +226,6 @@ const CATS = {
   menstrual: { en: 'Menstrual Health',bn: 'মাসিক স্বাস্থ্য' },
   surgery:   { en: 'Surgery',         bn: 'অস্ত্রোপচার' },
   general:   { en: "Women's Health",  bn: 'নারী স্বাস্থ্য' },
-};
-
-
-const CAT_COLORS = {
-  pcos:      'linear-gradient(135deg, #fde8e4, #f5c8bc)',
-  fertility: 'linear-gradient(135deg, #e8f0fe, #c8d8f8)',
-  pregnancy: 'linear-gradient(135deg, #e8f5ee, #c8e8d8)',
-  menstrual: 'linear-gradient(135deg, #fef3e8, #f8d8b8)',
-  surgery:   'linear-gradient(135deg, #f0e8fe, #d8c8f8)',
-  general:   'linear-gradient(135deg, #faf8f4, #f5e8e7)',
-  menstrual: 'linear-gradient(135deg, #fff0e8, #f8d8c8)',
 };
 
 const UI = {
@@ -323,11 +308,10 @@ function renderListing() {
   const lang = currentLang;
   const u = UI[lang];
   let posts = BLOG_POSTS.filter(p => currentFilter === 'all' || p.category === currentFilter);
-  // Apply search filter
   if (searchQuery) {
     posts = posts.filter(p => {
-      const title = (lang === 'bn' ? p.titleBn : p.titleEn).toLowerCase();
-      const excerpt = (lang === 'bn' ? p.excerptBn : p.excerptEn).toLowerCase();
+      const title = (currentLang === 'bn' ? p.titleBn : p.titleEn).toLowerCase();
+      const excerpt = (currentLang === 'bn' ? p.excerptBn : p.excerptEn).toLowerCase();
       return title.includes(searchQuery) || excerpt.includes(searchQuery);
     });
   }
@@ -337,11 +321,11 @@ function renderListing() {
   // Featured
   const fs = document.getElementById('featured-slot');
   if (featured) {
-    const catLabel = (CATS[featured.category] || CATS.general)[lang];
+    const catLabel = CATS[featured.category][lang];
     fs.innerHTML = `
       <div class="featured-article fade-up" onclick="openArticle('${featured.id}')">
         <div class="featured-img">
-          ${featured.image ? `<img src="${featured.image}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">` : `<div style="width:100%;height:100%;background:${CAT_COLORS[featured.category]||'linear-gradient(135deg,#f5e8e7,#fdf0ee)'};"></div>`}
+          ${featured.image ? `<img src="${featured.image}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">` : `<div class="featured-img-label">${(CATS[featured.category]||CATS.general)[lang]}</div>`}
           <div class="featured-badge">${u.featured}</div>
         </div>
         <div class="featured-body">
@@ -360,17 +344,12 @@ function renderListing() {
 
   // Grid
   const grid_el = document.getElementById('articles-grid');
-  if (posts.length === 0) {
-    document.getElementById('featured-slot').innerHTML = '';
-    grid_el.innerHTML = '<div class="no-results">No articles found' + (searchQuery ? ' for "<strong>' + searchQuery + '</strong>"' : '') + '</div>';
-    return;
-  }
   grid_el.innerHTML = grid.map(p => {
-    const catLabel = (CATS[p.category] || CATS.general)[lang];
+    const catLabel = CATS[p.category][lang];
     return `
       <div class="article-card fade-up" onclick="openArticle('${p.id}')">
-        <div class="article-img" style="background:${CAT_COLORS[p.category]||'linear-gradient(135deg,#f5e8e7,#fdf0ee)'}">
-          <div class="article-img-label" style="opacity:0.6;font-size:0.75rem;color:#8a4440;font-family:serif;font-style:italic;">${CATS[p.category]?(CATS[p.category] || CATS.general)[lang]:'Health'}</div>
+        <div class="article-img">
+          ${p.image ? `<img src="${p.image}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">` : `<div class="article-img-label">${(CATS[p.category]||CATS.general)[lang]}</div>`}
         </div>
         <div class="article-body">
           <div class="article-cat">${catLabel}</div>
@@ -385,10 +364,7 @@ function renderListing() {
   }).join('');
 
   // Re-observe
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 }
 
 function renderSidebar() {
@@ -414,29 +390,37 @@ function renderSidebar() {
 
 function filterCat(cat) {
   currentFilter = cat;
+  closeArticle();
   renderAll();
 }
-
-function closeArticle() {}
 
 function openArticle(id) {
   const post = BLOG_POSTS.find(p => p.id === id);
   if (!post) return;
   window.location.href = post.externalUrl || ('blog-' + id + '.html');
 }
-const searchInput = document.getElementById("blog-search");
-const searchClear = document.getElementById("search-clear");
-if (searchClear) {
-  searchClear.addEventListener('click', () => {
-    searchInput.value = '';
-    searchQuery = '';
-    searchClear.classList.remove('visible');
-    renderListing();
+
+function closeArticle() {
+  document.getElementById('listing-view').style.display = '';
+  document.getElementById('detail-view').classList.remove('open');
+}
+
+const observer = new IntersectionObserver(entries => entries.forEach(e => {
+  if (e.isIntersecting) e.target.classList.add('visible');
+}), { threshold: 0.08 });
+
+// Search
+const searchInput = document.getElementById('blog-search');
+if (searchInput) {
+  searchInput.addEventListener('input', (e) => {
+    searchQuery = e.target.value.toLowerCase().trim();
+    renderAll();
   });
 }
 
-
-
+// Init
+applyUI();
+renderAll();
 </script>
 </body>
 </html>
