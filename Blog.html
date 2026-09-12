@@ -79,6 +79,15 @@
 
   /* GRID */
   .articles-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+
+  /* SEARCH */
+  .search-wrap { position: relative; margin-bottom: 1.5rem; }
+  .search-input { width: 100%; padding: 12px 44px 12px 16px; border: 1.5px solid oklch(88% 0.018 55); border-radius: 99px; font-family: var(--font-sans); font-size: 14px; color: var(--ink); background: white; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+  .search-input:focus { border-color: var(--rose); box-shadow: 0 0 0 3px oklch(66% 0.09 15 / 0.10); }
+  .search-icon { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--ink-soft); pointer-events: none; }
+  .search-clear { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: var(--ink-soft); font-size: 16px; display: none; }
+  .search-clear.visible { display: block; }
+  .no-results { text-align: center; padding: 3rem 1rem; color: var(--ink-soft); font-size: 14px; }
   @media (max-width: 600px) { .articles-grid { grid-template-columns: 1fr; } .featured-article { grid-template-columns: 1fr; } }
   .article-card { background: white; border-radius: 16px; overflow: hidden; border: 1px solid oklch(91% 0.014 50); cursor: pointer; transition: box-shadow 0.25s, transform 0.25s; }
   .article-card:hover { box-shadow: 0 8px 32px oklch(20% 0.02 50 / 0.08); transform: translateY(-3px); }
@@ -226,7 +235,17 @@ const CATS = {
   pregnancy: { en: 'Pregnancy',       bn: 'গর্ভাবস্থা' },
   menstrual: { en: 'Menstrual Health',bn: 'মাসিক স্বাস্থ্য' },
   surgery:   { en: 'Surgery',         bn: 'অস্ত্রোপচার' },
-  general:   { en: 'Women\'s Health', bn: 'নারী স্বাস্থ্য' },
+};
+
+
+const CAT_COLORS = {
+  pcos:      'linear-gradient(135deg, #fde8e4, #f5c8bc)',
+  fertility: 'linear-gradient(135deg, #e8f0fe, #c8d8f8)',
+  pregnancy: 'linear-gradient(135deg, #e8f5ee, #c8e8d8)',
+  menstrual: 'linear-gradient(135deg, #fef3e8, #f8d8b8)',
+  surgery:   'linear-gradient(135deg, #f0e8fe, #d8c8f8)',
+  general:   'linear-gradient(135deg, #faf8f4, #f5e8e7)',
+  menstrual: 'linear-gradient(135deg, #fff0e8, #f8d8c8)',
 };
 
 const UI = {
@@ -318,10 +337,8 @@ function renderListing() {
     const catLabel = CATS[featured.category][lang];
     fs.innerHTML = `
       <div class="featured-article fade-up" onclick="openArticle('${featured.id}')">
-        <div class="featured-img">
-          ${featured.image
-            ? `<img src="${featured.image}" alt="" loading="lazy">`
-            : `<div class="featured-img-label">${lang==='bn'?featured.imageLabelBn:featured.imageLabelEn}</div>`}
+        <div class="featured-img" style="background:${CAT_COLORS[featured.category]||'linear-gradient(135deg,#f5e8e7,#fdf0ee)'}">
+          <div class="featured-img-label" style="opacity:0.7;font-size:1rem;color:#8a4440;font-family:serif;font-style:italic;">${CATS[featured.category]?CATS[featured.category][lang]:'Health'}</div>
           <div class="featured-badge">${u.featured}</div>
         </div>
         <div class="featured-body">
@@ -344,10 +361,8 @@ function renderListing() {
     const catLabel = CATS[p.category][lang];
     return `
       <div class="article-card fade-up" onclick="openArticle('${p.id}')">
-        <div class="article-img">
-          ${p.image
-            ? `<img src="${p.image}" alt="" loading="lazy">`
-            : `<div class="article-img-label">${lang==='bn'?p.imageLabelBn:p.imageLabelEn}</div>`}
+        <div class="article-img" style="background:${CAT_COLORS[p.category]||'linear-gradient(135deg,#f5e8e7,#fdf0ee)'}">
+          <div class="article-img-label" style="opacity:0.6;font-size:0.75rem;color:#8a4440;font-family:serif;font-style:italic;">${CATS[p.category]?CATS[p.category][lang]:'Health'}</div>
         </div>
         <div class="article-body">
           <div class="article-cat">${catLabel}</div>
@@ -397,7 +412,9 @@ function openArticle(id) {
   const u = UI[lang];
   const post = BLOG_POSTS.find(p => p.id === id);
   if (!post) return;
-  if (post.externalUrl) { window.location.href = post.externalUrl; return; }
+  // Always redirect to dedicated page
+  const url = post.externalUrl || ('blog-' + id + '.html');
+  window.location.href = url;
   const catLabel = CATS[post.category][lang];
   const content = document.getElementById('article-content');
   content.innerHTML = `
@@ -436,6 +453,69 @@ const observer = new IntersectionObserver(entries => entries.forEach(e => {
 // Init
 applyUI();
 renderAll();
+
+// ── SEARCH ─────────────────────────────────────────────────
+let searchQuery = '';
+const searchInput = document.getElementById('blog-search');
+const searchClear = document.getElementById('search-clear');
+
+if (searchInput) {
+  searchInput.addEventListener('input', (e) => {
+    searchQuery = e.target.value.toLowerCase().trim();
+    searchClear.classList.toggle('visible', searchQuery.length > 0);
+    renderListing();
+  });
+}
+if (searchClear) {
+  searchClear.addEventListener('click', () => {
+    searchInput.value = '';
+    searchQuery = '';
+    searchClear.classList.remove('visible');
+    renderListing();
+  });
+}
+
+// Patch renderListing to apply search filter
+const _origRender = renderListing;
+function renderListing() {
+  if (!searchQuery) { _origRender(); return; }
+  const lang = currentLang;
+  const u = UI[lang];
+  const posts = BLOG_POSTS.filter(p => {
+    const title = (lang === 'bn' ? p.titleBn : p.titleEn).toLowerCase();
+    const excerpt = (lang === 'bn' ? p.excerptBn : p.excerptEn).toLowerCase();
+    return title.includes(searchQuery) || excerpt.includes(searchQuery);
+  });
+  document.getElementById('featured-slot').innerHTML = '';
+  const grid_el = document.getElementById('articles-grid');
+  if (posts.length === 0) {
+    grid_el.innerHTML = '<div class="no-results">No articles found for "<strong>' + searchQuery + '</strong>"</div>';
+    return;
+  }
+  grid_el.innerHTML = posts.map(p => {
+    const catLabel = CATS[p.category] ? CATS[p.category][lang] : '';
+    return `
+      <div class="article-card fade-up" onclick="openArticle('${p.id}')">
+        <div class="article-img" style="background:${CAT_COLORS[p.category]||'linear-gradient(135deg,#f5e8e7,#fdf0ee)'}">
+          <div class="article-img-label" style="opacity:0.6;font-size:0.75rem;color:#8a4440;font-family:serif;font-style:italic;">${catLabel}</div>
+        </div>
+        <div class="article-body">
+          <div class="article-cat">${catLabel}</div>
+          <h3>${lang==='bn'?p.titleBn:p.titleEn}</h3>
+          <p>${lang==='bn'?p.excerptBn:p.excerptEn}</p>
+        </div>
+        <div class="article-footer">
+          <span class="article-meta">${lang==='bn'?p.dateBn:p.date} · ${p.readTime} ${u.minRead}</span>
+          <a href="#" class="read-more" onclick="event.stopPropagation();openArticle('${p.id}')">${u.read}</a>
+        </div>
+      </div>`;
+  }).join('');
+  document.querySelectorAll('.fade-up').forEach(el => {
+    const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible'); }), {threshold:0.1});
+    obs.observe(el);
+  });
+}
+
 </script>
 </body>
 </html>

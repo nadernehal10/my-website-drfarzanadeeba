@@ -47,62 +47,8 @@ const CONTACT = {
 const BLOG_POSTS = [
 
   {
-    id: "irregular-periods", category: "menstrual", featured: false, date: "September 2026", dateBn: "সেপ্টেম্বর ২০২৬", readTime: "6 min",
-    image: "img/blog-menstrual.svg", imageLabelEn: "Irregular periods", imageLabelBn: "অনিয়মিত মাসিক",
-    titleEn: "Irregular Periods in Bangladesh — Causes, Diagnosis and Treatment",
-    titleBn: "বাংলাদেশে অনিয়মিত মাসিক — কারণ, রোগ নির্ণয় এবং চিকিৎসা",
-    excerptEn: "Irregular periods are one of the most common reasons women visit a gynaecologist in Dhaka. This guide explains the causes and what treatments are available.",
-    excerptBn: "অনিয়মিত মাসিক ঢাকায় গাইনোকোলজিস্টের কাছে যাওয়ার সবচেয়ে সাধারণ কারণগুলির মধ্যে একটি।",
-    externalUrl: "blog-irregular-periods.html", bodyEn: "", bodyBn: "",
-  },
-  {
-    id: "recurrent-miscarriage", category: "pregnancy", featured: false, date: "September 2026", dateBn: "সেপ্টেম্বর ২০২৬", readTime: "7 min",
-    image: "img/blog-pregnancy.svg", imageLabelEn: "Recurrent miscarriage", imageLabelBn: "বারবার গর্ভপাত",
-    titleEn: "Recurrent Miscarriage — Causes, Investigations and Treatment in Bangladesh",
-    titleBn: "বারবার গর্ভপাত — বাংলাদেশে কারণ, পরীক্ষা এবং চিকিৎসা",
-    excerptEn: "Experiencing more than one miscarriage is devastating. But recurrent pregnancy loss has identifiable causes in many cases — and effective treatments are available in Dhaka.",
-    excerptBn: "একাধিক গর্ভপাতের অভিজ্ঞতা হৃদয়বিদারক। কিন্তু অনেক ক্ষেত্রে কারণ চিহ্নিত করা সম্ভব।",
-    externalUrl: "blog-recurrent-miscarriage.html", bodyEn: "", bodyBn: "",
-  },
-  {
-    id: "ovarian-cyst", category: "surgery", featured: false, date: "September 2026", dateBn: "সেপ্টেম্বর ২০২৬", readTime: "6 min",
-    image: "img/blog-surgery.svg", imageLabelEn: "Ovarian cyst", imageLabelBn: "ডিম্বাশয়ের সিস্ট",
-    titleEn: "Ovarian Cyst Treatment in Dhaka — When Is Surgery Needed?",
-    titleBn: "ঢাকায় ডিম্বাশয়ের সিস্ট চিকিৎসা — কখন অস্ত্রোপচার প্রয়োজন?",
-    excerptEn: "Most ovarian cysts resolve on their own. But some types require treatment. This guide explains the types, when to seek care, and when surgery is recommended in Dhaka.",
-    excerptBn: "বেশিরভাগ ডিম্বাশয়ের সিস্ট নিজেই সমাধান হয়। তবে কিছু ধরনের চিকিৎসা প্রয়োজন।",
-    externalUrl: "blog-ovarian-cyst.html", bodyEn: "", bodyBn: "",
-  },
-  {
-    id: "male-infertility", category: "fertility", featured: false, date: "September 2026", dateBn: "সেপ্টেম্বর ২০২৬", readTime: "6 min",
-    image: "img/blog-fertility.svg", imageLabelEn: "Male infertility", imageLabelBn: "পুরুষ বন্ধ্যাত্ব",
-    titleEn: "Male Infertility in Bangladesh — What Couples Need to Know",
-    titleBn: "বাংলাদেশে পুরুষ বন্ধ্যাত্ব — দম্পতিদের যা জানা দরকার",
-    excerptEn: "Male factor infertility is responsible for 40% of all cases yet often overlooked. This guide explains causes, semen analysis, and treatment options available in Dhaka.",
-    excerptBn: "পুরুষ উপাদান বন্ধ্যাত্ব সমস্ত ক্ষেত্রে ৪০% এর জন্য দায়ী তবু প্রায়ই উপেক্ষিত।",
-    externalUrl: "blog-male-infertility.html", bodyEn: "", bodyBn: "",
-  },
-  {
-    id: "first-gynae-appointment", category: "general", featured: false, date: "September 2026", dateBn: "সেপ্টেম্বর ২০২৬", readTime: "5 min",
-    image: "img/blog-fertility.svg", imageLabelEn: "Gynaecology appointment", imageLabelBn: "গাইনোকোলজি অ্যাপয়েন্টমেন্ট",
-    titleEn: "How to Prepare for Your First Gynaecology Appointment in Dhaka",
-    titleBn: "ঢাকায় আপনার প্রথম গাইনোকোলজি অ্যাপয়েন্টমেন্টের জন্য কীভাবে প্রস্তুতি নেবেন",
-    excerptEn: "Visiting a gynaecologist for the first time can feel daunting. This practical guide tells you what to expect, how to prepare, and what questions to ask.",
-    excerptBn: "প্রথমবার গাইনোকোলজিস্টের কাছে যাওয়া কঠিন মনে হতে পারে।",
-    externalUrl: "blog-first-gynae-appointment.html", bodyEn: "", bodyBn: "",
-  },
-  {
-    id: "fibroids-fertility", category: "surgery", featured: false, date: "September 2026", dateBn: "সেপ্টেম্বর ২০২৬", readTime: "7 min",
-    image: "img/blog-surgery.svg", imageLabelEn: "Uterine fibroids", imageLabelBn: "জরায়ুর ফাইব্রয়েড",
-    titleEn: "Fibroids and Fertility — What Every Bangladeshi Woman Should Know",
-    titleBn: "ফাইব্রয়েড এবং উর্বরতা — প্রতিটি বাংলাদেশি নারীর যা জানা উচিত",
-    excerptEn: "Uterine fibroids are found in up to 70% of women. While many cause no problems, some types can affect fertility and pregnancy.",
-    excerptBn: "জরায়ুর ফাইব্রয়েড ৭০% পর্যন্ত নারীদের মধ্যে পাওয়া যায়।",
-    externalUrl: "blog-fibroids-fertility.html", bodyEn: "", bodyBn: "",
-  },
-
-  {
     id: "pcos",
+    externalUrl: "blog-pcos.html",
     category: "pcos",
     featured: true,
     date: "March 2025",
@@ -145,6 +91,7 @@ const BLOG_POSTS = [
 
   {
     id: "fertility",
+    externalUrl: "blog-fertility.html",
     category: "fertility",
     featured: false,
     date: "January 2025",
@@ -177,6 +124,7 @@ const BLOG_POSTS = [
 
   {
     id: "pregnancy",
+    externalUrl: "blog-pregnancy.html",
     category: "pregnancy",
     featured: false,
     date: "November 2024",
@@ -205,6 +153,7 @@ const BLOG_POSTS = [
 
   {
     id: "menstrual",
+    externalUrl: "blog-menstrual.html",
     category: "menstrual",
     featured: false,
     date: "September 2024",
@@ -233,6 +182,7 @@ const BLOG_POSTS = [
 
   {
     id: "surgery",
+    externalUrl: "blog-surgery.html",
     category: "surgery",
     featured: false,
     date: "July 2024",
